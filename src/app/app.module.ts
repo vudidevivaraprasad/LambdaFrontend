@@ -1,18 +1,70 @@
-import { NgModule } from '@angular/core';
+import { APP_INITIALIZER, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
-import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
+import { HomeComponent } from './components/home/home.component';
+import { authGuard } from './Guard/auth/auth.guard';
+import { LoginComponent } from './components/Auth/login/login.component';
+import { RegisterComponent } from './components/Auth/register/register.component';
+import { AuthInitService } from './services/auth-init.service';
+import { LoaderComponent } from './components/Utilities/loader/loader.component';
+import { VerificationComponent } from './components/Auth/verification/verification.component';
+import { ForgetpasswordComponent } from './components/Auth/forgetpassword/forgetpassword.component';
+
+export function authInitializer(authInitService: AuthInitService) {
+  return () => authInitService.init();
+}
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    HomeComponent,
+    LoginComponent,
+    RegisterComponent,
+    LoaderComponent,
+    VerificationComponent,
+    ForgetpasswordComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    HttpClientModule,
+    FormsModule,
+    RouterModule.forRoot([
+      {
+        path:'home',
+        component:HomeComponent
+      },
+      {
+        path:'login',
+        canActivate:[authGuard],
+        component:LoginComponent
+      },
+      {
+        path:'register',
+        canActivate:[authGuard],
+        component:RegisterComponent
+      },
+      {
+        path:'verification',
+        component:VerificationComponent
+      },
+      {
+        path:'forgetpassword',
+        component:ForgetpasswordComponent
+      }
+    ])
   ],
-  providers: [],
+  providers: [
+    // {
+    //   provide: APP_INITIALIZER,
+    //   useFactory: authInitializer,
+    //   deps: [AuthInitService],
+    //   multi: true
+    // }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

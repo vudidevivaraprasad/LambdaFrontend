@@ -1,0 +1,30 @@
+<form #form_ref="ngForm" class="col-12 container vh-100 d-flex align-items-center justify-content-center">
+  <div class="col-lg-6 col-sm-10 col-12 h-50">
+    <div class="mb-3">
+      <label for="mail" class="form-label" >Email</label>
+      <input name="mail"  type="mail" class="form-control" required email #mail_ref="ngModel" [(ngModel)]="userdetails.mail">
+      <p class="text-danger" *ngIf="mail_ref.touched && mail_ref.value?.length<1">Mail is required</p>
+      <p class="text-danger" *ngIf="mail_ref.errors?.['email']">Enter valid mail</p>
+    </div>
+    <div class="mb-3">
+      <label for="password" class="form-label" >Password</label>
+      <input name="password" type="password" class="form-control" required #password_ref="ngModel" [(ngModel)]="userdetails.password">
+      <p class="text-danger" *ngIf="password_ref.touched && password_ref.value?.length<1">Password is required</p>
+    </div>
+    <div>
+      <label for="confirmpassword" class="form-label" >Confirm Password</label>
+      <input name="confirmpassword" type="password" class="form-control" required #confirmpassword_ref="ngModel" [(ngModel)]="userdetails.confirmpassword">
+      <p class="text-danger" *ngIf="confirmpassword_ref.touched && password_ref.value != confirmpassword_ref.value && confirmpassword_ref.value?.length>0">Password and Confirm password are not matched</p>
+    </div>
+    <div class="text-center">
+      <p>Already have an account <a routerLink="/login">Login</a></p>
+    </div>
+    <div *ngIf="message" class="bg-opacity-75" [ngClass]="message=='OK'?'bg-success':'bg-danger'">
+      <p *ngIf="message!='OK'" class="py-2 mt-1 text-center" >{{message}}</p>
+      <p *ngIf="message=='OK'" class="py-2 mt-1 text-center" >We’ve sent you a verification email. Please check your inbox to verify your account.</p>
+    </div>
+    <div class="text-center">
+      <button type="submit" class="btn btn-primary mt-3" [disabled]="form_ref.invalid || password_ref.value != confirmpassword_ref.value" (click)="submit()">Register</button>
+    </div>
+  </div>
+</form>

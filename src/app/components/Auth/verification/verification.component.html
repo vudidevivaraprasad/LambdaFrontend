@@ -1,0 +1,10 @@
+<div class="vh-100 w-100 d-flex justify-content-center align-items-center" *ngIf="message">
+  <div>
+    <div class="bg-opacity-75" [ngClass]="message=='already verified' || message=='verified'?'bg-success':'bg-danger'">
+      <p class="px-3 py-2">{{message}}</p>
+    </div>
+    <div *ngIf="message=='already verified' || message=='verified'">
+      <p class="text-center"><a class="text-decoration-none" routerLink='/login'>Login</a></p>
+    </div>
+  </div>
+</div>

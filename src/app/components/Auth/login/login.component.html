@@ -1,0 +1,25 @@
+<form #form_ref="ngForm" class="col-12 container vh-100 d-flex align-items-center justify-content-center">
+  <div class="col-lg-6 col-sm-10 col-12 h-50">
+    <div class="mb-3">
+      <label for="mail" class="form-label" >Email</label>
+      <input name="mail"  type="mail" class="form-control" required email #mail_ref="ngModel" [(ngModel)]="userdetails.mail">
+      <p class="text-danger" *ngIf="mail_ref.touched && mail_ref.value?.length<1">Mail is required</p>
+      <p class="text-danger" *ngIf="mail_ref.errors?.['email']">Enter valid mail</p>
+    </div>
+    <div>
+      <label for="password" class="form-label" >Password</label>
+      <input name="password" type="password" class="form-control" required #password_ref="ngModel" [(ngModel)]="userdetails.password">
+      <p class="text-danger" *ngIf="password_ref.touched && password_ref.value?.length<1">Password is required</p>
+    </div>
+    <div class="text-center mt-2">
+      <p class="mb-0">Don't have an account <a class="text-decoration-none" routerLink="/register">Register</a></p>
+      <p class="mb-0">If you forget your password <a class="text-decoration-none" routerLink="/forgetpassword">Forgetpassword</a></p>
+    </div>
+    <div *ngIf="message" class="bg-opacity-75" [ngClass]="message=='login successful'?'bg-success':'bg-danger'">
+      <p class="py-2 mt-1 text-center" >{{message}}</p>
+    </div>
+    <div class="text-center">
+      <button type="submit" class="btn btn-primary mt-3" [disabled]="form_ref.invalid" (click)="submit()">Login</button>
+    </div>
+  </div>
+</form>

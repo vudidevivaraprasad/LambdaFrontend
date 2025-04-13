@@ -1,0 +1,66 @@
+<a routerLink="/login">Login<br></a>
+<a routerLink="/register">Register<br></a>
+<p *ngIf="isLogin">User<br></p>
+<p *ngIf="isAdmin">Admin<br></p>
+
+<form ngForm>
+  <input type="text" [(ngModel)]="login_data.mail" name="email">email
+  <input type="password" [(ngModel)]="login_data.password" name="password">password
+  <button (click)="submit()">Submit</button>
+</form>
+
+<form ngForm>
+  <input type="text" [(ngModel)]="register_data.mail" name="email">email
+  <input type="password" [(ngModel)]="register_data.password" name="password">password
+  <button (click)="submit2()">Submit</button>
+</form>
+
+<input type="text" #verify>
+<button (click)="verification(verify.value)">verify</button>
+
+<button (click)="GetAllUSers()">GetAllUsers</button><br>
+
+<button (click)="GetAllUserDetails()">GetAllUserDetails</button><br>
+
+<button (click)="logout()">logout</button><br>
+
+<button (click)="getProducts()">getAllproducts</button><br>
+
+<input type="text" #add>
+<button (click)="AddToCart(add.value)">Add to cart</button><br>
+
+<input type="text" #remove>
+<button (click)="RemoveFromCart(remove.value)">remove from cart</button><br>
+
+<button (click)="GetCart()">cart items</button><br>
+
+<input type="text" #addwishlist>
+<button (click)="AddToWishlist(addwishlist.value)">Add to wishlist</button><br>
+
+<input type="text" #removewishlist>
+<button (click)="RemoveFromWishlist(removewishlist.value)">remove from wishlist</button><br>
+
+<button (click)="GetWishlist()">wishlist items</button><br>
+
+
+<input type="text" #addorders>
+<button (click)="AddToOrders(addorders.value)">Add to orders</button><br>
+
+<button (click)="GetOrders()">order items</button><br>
+
+
+<input type="text" #name placeholder="name"><br>
+<input type="number" #mobile placeholder="mobilenumber"><br>
+<input type="number" #pincode placeholder="pincode"><br>
+<input type="text" #state placeholder="state"><br>
+<input type="text" #city placeholder="city"><br>
+<input type="text" #village placeholder="village"><br>
+<input type="text" #area placeholder="area"><br>
+<button (click)="AddToAddress(name.value,mobile.value,pincode.value,state.value,city.value,village.value,area.value)">Add to address</button><br>
+
+<input type="text" #id placeholder="id"><br>
+<button (click)="RemoveFromAddress(id.value)">Remove Address</button>
+
+<button (click)="GetAddress()">address items</button><br>
+
+
