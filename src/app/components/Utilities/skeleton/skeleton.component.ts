@@ -1,13 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import SkeletonLoadingDetailsStoreService from 'src/app/ReduxStore/SkeletonLoading/SkeletonLoadingDetails.service';
-import { SetSkeletonLoading } from 'src/app/ReduxStore/Store';
 
 @Component({
-  selector: 'app-products',
-  templateUrl: './products.component.html',
-  styleUrls: ['./products.component.css']
+  selector: 'app-skeleton',
+  templateUrl: './skeleton.component.html',
+  styleUrls: ['./skeleton.component.css']
 })
-export class ProductsComponent implements OnInit {
+export class SkeletonComponent implements OnInit {
 
   isLoading:boolean = false;
 
@@ -15,16 +14,9 @@ export class ProductsComponent implements OnInit {
 
   ngOnInit(): void {
     this.loading.state$.subscribe(data => this.isLoading = data.isLoading)
-    setTimeout(() => {
-      this.loading.dispatch(SetSkeletonLoading({isLoading:true}))
-      setTimeout(() => {
-
-        this.loading.dispatch(SetSkeletonLoading({isLoading:false}))
-      }, 1000);
-    }, 100);
   }
 
-  products = [
+  values = [
     {
     "id": 9,
     "title": "Classic Navy Blue Baseball Cap",

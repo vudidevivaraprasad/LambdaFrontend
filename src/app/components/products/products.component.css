@@ -1,0 +1,36 @@
+.card_img{
+  width: 12rem;
+  height: 9rem;
+  object-fit: cover;
+}
+
+.image_responsive{
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  overflow: hidden;
+  background-repeat: no-repeat;
+}
+
+.transparent_background{
+  background-color: transparent;
+}
+
+.c_shadow{
+  box-shadow: 10px 8px 20px rgb(181, 181, 181);
+}
+
+.cus_spinner{
+  height: 90vh;
+}
+.cus_spinner>div{
+  border-width: 0.35rem;
+  width: 5rem;
+  height: 5rem;
+}
+
+@media (max-width:575px){
+  .card_img{
+      height: 15rem;
+  }
+}

@@ -1,1 +1,20 @@
-<p>products works!</p>
+<ng-container *ngIf="!isLoading">
+  <div class="container">
+    <div class="row row-cols-md-3 row-cols-lg-4 row-cols-2 gx-md-4 gy-5 g-3 my-0">
+        <div class="col" *ngFor="let data of products">
+            <div class='card border border-0 c_shadow overflow-hidden'>
+              <div>
+                <img src='../../../assets/1.jpg' alt="" class='card-img-top image_responsive' />
+              </div>
+                <div class="card-body rounded transparent_background">
+                    <p class="card-title">{{data.title}}</p>
+                    <div class="m-0 p-0 d-flex justify-content-between">
+                        <!-- <IconsList platforms={data.parent_platforms}/>
+                        <MetaCritic critic={data.metacritic}/> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+</ng-container>

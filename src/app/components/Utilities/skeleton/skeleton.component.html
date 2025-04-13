@@ -1,0 +1,21 @@
+<ng-container *ngIf="isLoading">
+  <div class="container">
+    <div class="row row-cols-md-3 row-cols-lg-4 row-cols-2 g-md-5 g-3 my-0">
+          <div class="col" *ngFor="let data of values">
+              <div class="card overflow-hidden" aria-hidden="true" style='boxShadow: "10px 8px 20px rgb(181, 181, 181)"'>
+                  <div class="placeholder-glow">
+                      <span class="placeholder" style='width:216px;height:216px'></span>
+                  </div>
+                  <div class="card-body">
+                      <h5 class="card-title placeholder-glow">
+                          <span class="placeholder col-6"></span>
+                      </h5>
+                      <h5 class="card-title placeholder-glow">
+                          <span class="placeholder col-6"></span>
+                      </h5>
+                  </div>
+              </div>
+          </div>
+    </div>
+  </div>
+</ng-container>

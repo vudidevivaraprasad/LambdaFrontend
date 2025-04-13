@@ -13,6 +13,9 @@ import { AuthInitService } from './services/auth-init.service';
 import { LoaderComponent } from './components/Utilities/loader/loader.component';
 import { VerificationComponent } from './components/Auth/verification/verification.component';
 import { ForgetpasswordComponent } from './components/Auth/forgetpassword/forgetpassword.component';
+import { NavBarComponent } from './components/Utilities/nav-bar/nav-bar.component';
+import { ProductsComponent } from './components/products/products.component';
+import { SkeletonComponent } from './components/Utilities/skeleton/skeleton.component';
 
 export function authInitializer(authInitService: AuthInitService) {
   return () => authInitService.init();
@@ -26,7 +29,10 @@ export function authInitializer(authInitService: AuthInitService) {
     RegisterComponent,
     LoaderComponent,
     VerificationComponent,
-    ForgetpasswordComponent
+    ForgetpasswordComponent,
+    NavBarComponent,
+    ProductsComponent,
+    SkeletonComponent
   ],
   imports: [
     BrowserModule,
