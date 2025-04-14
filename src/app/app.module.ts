@@ -16,6 +16,8 @@ import { ForgetpasswordComponent } from './components/Auth/forgetpassword/forget
 import { NavBarComponent } from './components/Utilities/nav-bar/nav-bar.component';
 import { ProductsComponent } from './components/products/products.component';
 import { SkeletonComponent } from './components/Utilities/skeleton/skeleton.component';
+import { ProductComponent } from './components/product/product.component';
+import { CartComponent } from './components/cart/cart.component';
 
 export function authInitializer(authInitService: AuthInitService) {
   return () => authInitService.init();
@@ -32,13 +34,20 @@ export function authInitializer(authInitService: AuthInitService) {
     ForgetpasswordComponent,
     NavBarComponent,
     ProductsComponent,
-    SkeletonComponent
+    SkeletonComponent,
+    ProductComponent,
+    CartComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     FormsModule,
     RouterModule.forRoot([
+      {
+        path:'',
+        redirectTo:'home',
+        pathMatch: 'full'
+      },
       {
         path:'home',
         component:HomeComponent
@@ -60,6 +69,14 @@ export function authInitializer(authInitService: AuthInitService) {
       {
         path:'forgetpassword',
         component:ForgetpasswordComponent
+      },
+      {
+        path: 'product',
+        component:ProductComponent
+      },
+      {
+        path: 'cart',
+        component:CartComponent
       }
     ])
   ],

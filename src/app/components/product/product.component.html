@@ -1,0 +1,25 @@
+<div class="d-flex justify-content-center">
+  <div class="custom-flex d-flex custom-height" style="padding-top: 5rem !important;">
+    <div class="col-6 rounded overflow-hidden custom-width-mobile">
+      <img src="../../../assets/1.jpg" class="object-fit-cover w-100 h-100" alt="" />
+    </div>
+    <div class="d-flex align-items-center justify-content-center col-6 h-100 custom-width-mobile">
+      <div class="w-100 d-flex flex-column justify-content-around custom">
+        <p class="custom-font fw-bolder ">{{data?.title}}</p>
+        <div class="d-flex align-items-center mb-3">
+          <i class="bi bi-currency-rupee fw-bold"></i>
+          <p class="m-0 p-0 fw-bold">{{data.price}}</p>
+        </div>
+        <div class="input-group input-group-sm mb-3" style="width: 100px !important; height: 35px !important;">
+          <button class="input-group-text" id="inputGroup-sizing-sm">-</button>
+          <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" readonly disabled value="1">
+          <button class="input-group-text" id="inputGroup-sizing-sm">+</button>
+        </div>
+        <div class="w-100">
+          <button class="btn btn-dark w-100 my-3 py-md-3 py-2 custom-padding">Add to Cart</button><br>
+          <button class="btn btn-primary w-100 py-md-3 py-2 custom-padding">Buy Now</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

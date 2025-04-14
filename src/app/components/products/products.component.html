@@ -1,17 +1,19 @@
 <ng-container *ngIf="!isLoading">
-  <div class="container">
-    <div class="row row-cols-md-3 row-cols-lg-4 row-cols-2 gx-md-4 gy-5 g-3 my-0">
+  <div class="container py-5">
+    <div class="row row-cols-md-3 row-cols-lg-4 row-cols-2 gx-md-5 gy-md-5 gy-3 g-3 my-0">
         <div class="col" *ngFor="let data of products">
             <div class='card border border-0 c_shadow overflow-hidden'>
-              <div>
-                <img src='../../../assets/1.jpg' alt="" class='card-img-top image_responsive' />
+              <div class="position-relative">
+                <i class="bi bi-heart text-light position-absolute custom-place" (click)="wishlistclicked()"></i>
+                <img (click)="redirectToProduct(data)" src='../../../assets/1.jpg' alt="" class='card-img-top image_responsive' style="cursor: pointer;" />
               </div>
-                <div class="card-body rounded transparent_background">
-                    <p class="card-title">{{data.title}}</p>
-                    <div class="m-0 p-0 d-flex justify-content-between">
-                        <!-- <IconsList platforms={data.parent_platforms}/>
-                        <MetaCritic critic={data.metacritic}/> -->
+                <div class="card-body rounded transparent_background pt-0">
+                    <p class="card-title my-1 text-truncate">{{data.title}}</p>
+                    <div class="d-flex mb-1 p-0 align-items-center">
+                      <i class="bi bi-currency-rupee fw-bold"></i>
+                      <p class="m-0 p-0 fw-bold">{{data.price}}</p>
                     </div>
+                    <button class="btn btn-primary w-100">Add to Cart</button>
                 </div>
             </div>
         </div>

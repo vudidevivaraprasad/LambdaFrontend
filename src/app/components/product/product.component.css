@@ -1,0 +1,60 @@
+.custom-height{
+  height: 40rem;
+  width: 90%;
+}
+.custom-font{
+  font-size: 30px !important;
+}
+.custom{
+  width: 80% !important;
+}
+
+@media (max-width:1000px){
+  .custom-height{
+    width: 95%;
+  }
+  .custom-font{
+    font-size: 25px !important;
+  }
+  .custom{
+    width: 90% !important;
+  }
+
+}
+
+@media (max-width:950px){
+  .custom-height{
+    height: 35rem;
+  }
+}
+
+@media (max-width:800px){
+  .custom-height{
+    height: 30rem;
+  }
+  .custom-font{
+    font-size: 20px !important;
+  }
+  .custom-padding{
+    padding-top: .5rem !important;
+    padding-bottom: .5rem !important;
+  }
+}
+
+@media (max-width:630px){
+  .custom-flex{
+    flex-direction: column;
+    align-items: center;
+  }
+  .custom-width-mobile{
+    margin-top: 1rem;
+    height: fit-content !important;
+    width: 80% !important;
+  }
+}
+@media (max-width:470px) {
+  .custom-font{
+    font-size: 18px !important;
+  }
+}
+

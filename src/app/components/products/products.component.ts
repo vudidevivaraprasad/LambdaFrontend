@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import SkeletonLoadingDetailsStoreService from 'src/app/ReduxStore/SkeletonLoading/SkeletonLoadingDetails.service';
 import { SetSkeletonLoading } from 'src/app/ReduxStore/Store';
 
@@ -11,7 +12,7 @@ export class ProductsComponent implements OnInit {
 
   isLoading:boolean = false;
 
-  constructor(private loading:SkeletonLoadingDetailsStoreService){}
+  constructor(private loading:SkeletonLoadingDetailsStoreService,private route:Router){}
 
   ngOnInit(): void {
     this.loading.state$.subscribe(data => this.isLoading = data.isLoading)
@@ -22,6 +23,14 @@ export class ProductsComponent implements OnInit {
         this.loading.dispatch(SetSkeletonLoading({isLoading:false}))
       }, 1000);
     }, 100);
+  }
+
+  redirectToProduct(data:any){
+    this.route.navigate(['/product'],{ state: {data:data}})
+  }
+
+  wishlistclicked(){
+    console.log('clicked')
   }
 
   products = [
