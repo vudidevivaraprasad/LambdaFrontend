@@ -1,0 +1,27 @@
+<form ngForm class="pt-5">
+  <span class="mt-5">category</span><br>
+  <input type="radio" name="c" value="Grocery" [(ngModel)]="product_data.category">Grocery<br>
+  <input type="radio" name="c" value="Mobiles" [(ngModel)]="product_data.category">Mobiles<br>
+  <input type="radio" name="c" value="Fashion" [(ngModel)]="product_data.category">Mobiles<br>
+  <input type="radio" name="c" value="Electronics" [(ngModel)]="product_data.category">Electronics<br>
+
+  <label for="subcategory">subcategory</label>
+  <input type="text" id="subcategory" name="subcategory" [(ngModel)]="product_data.subcategory"><br>
+
+  <label for="name">name</label>
+  <input type="text" id="name" name="name" [(ngModel)]="product_data.title"><br>
+
+
+  <label for="details">details</label>
+  <input type="text" id="details" name="details" [(ngModel)]="product_data.description"><br>
+
+  <label for="amount">amount</label>
+  <input type="number" id="amount" name="amount" [(ngModel)]="product_data.price"><br>
+
+
+
+  <input type="file" name="file" (change)="onchange($event)">
+  <button (click)="onsubmit()">Submit</button>
+
+  <button (click)="submit2()">submit2</button>
+</form>

@@ -1,9 +1,8 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http'
 import { Observable } from 'rxjs';
-import { Auth, ForgetPassword, ForgetPasswordResult, ForgetpasswordToken, ForgetpasswordTokenResult, Login, Message, RegisterAuth } from '../Interfaces/AuthInterface';
+import { AllProducts, Auth, ForgetPassword, ForgetPasswordResult, ForgetpasswordToken, ForgetpasswordTokenResult, Login, Message, RegisterAuth } from '../Interfaces/AuthInterface';
 import { Environment } from '../environment/environment';
-import { ForgetpasswordComponent } from '../components/Auth/forgetpassword/forgetpassword.component';
 
 @Injectable({
   providedIn: 'root'
@@ -41,5 +40,9 @@ export class ApiService {
 
   ForgetPassword(data:ForgetPassword):Observable<ForgetPasswordResult>{
     return this.http.post<ForgetPasswordResult>(`${this.url}/forgetpassword`,data)
+  }
+
+  Products():Observable<AllProducts>{
+    return this.http.get<AllProducts>(`${this.url}/products`)
   }
 }

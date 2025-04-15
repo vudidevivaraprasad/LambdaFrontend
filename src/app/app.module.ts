@@ -18,6 +18,7 @@ import { ProductsComponent } from './components/products/products.component';
 import { SkeletonComponent } from './components/Utilities/skeleton/skeleton.component';
 import { ProductComponent } from './components/product/product.component';
 import { CartComponent } from './components/cart/cart.component';
+import { AdminComponent } from './components/admin/admin.component';
 
 export function authInitializer(authInitService: AuthInitService) {
   return () => authInitService.init();
@@ -36,7 +37,8 @@ export function authInitializer(authInitService: AuthInitService) {
     ProductsComponent,
     SkeletonComponent,
     ProductComponent,
-    CartComponent
+    CartComponent,
+    AdminComponent
   ],
   imports: [
     BrowserModule,
@@ -77,6 +79,10 @@ export function authInitializer(authInitService: AuthInitService) {
       {
         path: 'cart',
         component:CartComponent
+      },
+      {
+        path: 'admin',
+        component: AdminComponent
       }
     ])
   ],

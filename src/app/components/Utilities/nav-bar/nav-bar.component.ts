@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import AuthDetailsStoreService from 'src/app/ReduxStore/Auth/AuthDetails.service';
+import CartDetailsStoreService from 'src/app/ReduxStore/Cart/CartDetails.service';
 
 @Component({
   selector: 'app-nav-bar',
@@ -12,9 +13,12 @@ export class NavBarComponent implements OnInit {
   isLogin:boolean = false;
   isAdmin:boolean = false;
 
-  constructor(private route:Router,private authdetails:AuthDetailsStoreService){}
+  constructor(private route:Router,private authdetails:AuthDetailsStoreService,private cart:CartDetailsStoreService){}
+
+  items:string[] = []
 
   ngOnInit(): void {
+    this.cart.state$.subscribe(data => this.items = data.items)
     this.authdetails.state$
       .subscribe(data => {
         this.isLogin = data.isLogin;

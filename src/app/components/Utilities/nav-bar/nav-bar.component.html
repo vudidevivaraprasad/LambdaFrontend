@@ -1,6 +1,7 @@
-<nav class="navbar bg-body-tertiary position-fixed w-100 z-3">
+<nav class="navbar bg-body-tertiary position-fixed w-100 z-3" style="box-shadow: 0px 0px 10px rgb(181, 181, 181);">
   <div class="container-fluid">
     <a class="navbar-brand" routerLink="/home">Navbar</a>
+    <a routerLink="/admin">Admin</a>
     <div class="d-flex col-9 justify-content-between align-items-center">
         <input class="form-control w-75" type="search" placeholder="Search" aria-label="Search" (keydown.enter)="search()">
       <div class="d-flex ms-4">
@@ -8,9 +9,9 @@
           <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-bag" viewBox="0 0 16 16">
             <path d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1m3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1z"/>
           </svg>
-          <p class="position-absolute rounded-circle bg-primary d-flex justify-content-center align-items-center"
+          <p *ngIf="items.length>0" class="position-absolute rounded-circle bg-primary d-flex justify-content-center align-items-center"
               style="width: 20px; height: 20px; top: -5px;right: -5px;">
-            <span class="text-light" style="font-size: 10px;">10</span>
+            <span class="text-light" style="font-size: 10px;">{{items.length}}</span>
           </p>
         </div>
         <div class="ms-lg-5 ms-1 ms-md-3">

@@ -1,6 +1,6 @@
 <div class="d-flex justify-content-center">
   <div class="custom-flex d-flex custom-height" style="padding-top: 5rem !important;">
-    <div class="col-6 rounded overflow-hidden custom-width-mobile">
+    <div class="col-6 rounded overflow-hidden custom-width-mobile" style="box-shadow: 10px 8px 20px rgb(181, 181, 181);">
       <img src="../../../assets/1.jpg" class="object-fit-cover w-100 h-100" alt="" />
     </div>
     <div class="d-flex align-items-center justify-content-center col-6 h-100 custom-width-mobile">
@@ -15,8 +15,9 @@
           <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" readonly disabled value="1">
           <button class="input-group-text" id="inputGroup-sizing-sm">+</button>
         </div>
-        <div class="w-100">
-          <button class="btn btn-dark w-100 my-3 py-md-3 py-2 custom-padding">Add to Cart</button><br>
+        <div class="d-flex flex-column w-100">
+          <button *ngIf="!cartItems.includes(data?.id)" class="btn btn-dark w-100 my-3 py-md-3 py-2 custom-padding" (click)="AddToCart(data?.id)">Add to Cart</button>
+          <button *ngIf="cartItems.includes(data?.id)" class="btn btn-dark w-100 my-3 py-md-3 py-2 custom-padding" routerLink="/cart">Go to Cart</button>
           <button class="btn btn-primary w-100 py-md-3 py-2 custom-padding">Buy Now</button>
         </div>
       </div>

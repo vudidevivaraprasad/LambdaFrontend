@@ -49,3 +49,23 @@ export interface ForgetPassword{
 export interface ForgetPasswordResult{
   message:string
 }
+
+export interface Cart{
+  items:string[]
+}
+
+export interface AllProducts{
+  result: Product[]
+}
+
+export interface Product{
+  "image": string,
+  "createdAt": number,
+  "price": number,
+  "description": string,
+  "id": string,
+  "title": string,
+  "category": string,
+  "subcategory": string,
+  "updatedAt": number
+}

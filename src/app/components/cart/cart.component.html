@@ -1,15 +1,18 @@
 <div>
-  <h1 style="padding-top: 5rem !important;">Shopping Cart</h1>
+  <h1 style="padding-top: 5rem !important;" class="text-center mb-4 fw-bolder">Shopping Cart</h1>
   <div *ngFor="let item of list" class="mb-3 d-flex justify-content-center align-items-center">
     <div class="custom-flex d-flex justify-content-between custom-height w-50  border rounded">
-      <div class="col-3 rounded overflow-hidden custom-width-mobile">
+      <div class="col-3 rounded overflow-hidden custom-width-mobile" routerLink="/product">
         <img src="../../../assets/1.jpg" class="object-fit-cover w-100 h-100" alt="" />
       </div>
-      <div class="d-flex align-items-center justify-content-center col-8 custom-width-mobile">
+      <div class="d-flex align-items-center justify-content-center col-9 custom-width-mobile position-relative">
+        <div class="position-absolute custom-place">
+          <i class="bi bi-x"></i>
+        </div>
         <div class="w-100 d-flex justify-content-around align-items-center custom">
-          <p class="fs-5 fw-bolder w-75">Sleek White & Orange Wireless Gaming Controller</p>
-          <div class="d-flex">
-            <div class="input-group input-group-sm mb-3" style="width: 100px !important; height: 35px !important;">
+          <p class="fs-5 fw-bolder w-50 ps-2 custom-font">Sleek White & Orange Wireless Gaming Controller</p>
+          <div class="d-flex w-50 justify-content-around">
+            <div class="input-group input-group-sm mb-3 custom-width-quantity" style="width: 30%; height: 35px;">
               <button class="input-group-text" id="inputGroup-sizing-sm">-</button>
               <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" readonly disabled value="1">
               <button class="input-group-text" id="inputGroup-sizing-sm">+</button>
