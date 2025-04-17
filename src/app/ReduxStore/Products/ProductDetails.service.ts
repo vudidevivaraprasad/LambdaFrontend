@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import {Store} from '../Store'
+import {Store,SetLoading} from '../Store'
 import { BehaviorSubject } from 'rxjs';
-import { Cart } from 'src/app/Interfaces/AuthInterface';
+import { User,Loading, Cart } from 'src/app/Interfaces/AuthInterface';
 import {AddToCart,RemoveFromCart} from '../Store'
 
 type CartAction = ReturnType<typeof AddToCart> | ReturnType<typeof RemoveFromCart>

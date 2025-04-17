@@ -51,11 +51,15 @@ export interface ForgetPasswordResult{
 }
 
 export interface Cart{
-  items:string[]
+  items:Product[]
 }
 
 export interface AllProducts{
   result: Product[]
+}
+
+export interface OneProduct{
+  result:Product
 }
 
 export interface Product{
@@ -68,4 +72,22 @@ export interface Product{
   "category": string,
   "subcategory": string,
   "updatedAt": number
+}
+
+export interface Wishlist{
+  items: Product[]
+}
+
+export interface AddressList{
+  items: Address[]
+}
+
+export interface Address{
+  name:string,
+  mobilenumber:number,
+  pincode:number,
+  state:string,
+  city:string,
+  village:string,
+  area?:string
 }

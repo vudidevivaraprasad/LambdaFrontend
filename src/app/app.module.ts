@@ -19,6 +19,9 @@ import { SkeletonComponent } from './components/Utilities/skeleton/skeleton.comp
 import { ProductComponent } from './components/product/product.component';
 import { CartComponent } from './components/cart/cart.component';
 import { AdminComponent } from './components/admin/admin.component';
+import { WishlistComponent } from './components/wishlist/wishlist.component';
+import { AddressComponent } from './components/address/address.component';
+import { OrdersComponent } from './components/orders/orders.component';
 
 export function authInitializer(authInitService: AuthInitService) {
   return () => authInitService.init();
@@ -38,7 +41,10 @@ export function authInitializer(authInitService: AuthInitService) {
     SkeletonComponent,
     ProductComponent,
     CartComponent,
-    AdminComponent
+    AdminComponent,
+    WishlistComponent,
+    AddressComponent,
+    OrdersComponent
   ],
   imports: [
     BrowserModule,
@@ -73,12 +79,20 @@ export function authInitializer(authInitService: AuthInitService) {
         component:ForgetpasswordComponent
       },
       {
-        path: 'product',
+        path: 'product/:id',
         component:ProductComponent
       },
       {
         path: 'cart',
         component:CartComponent
+      },
+      {
+        path: 'wishlist',
+        component:WishlistComponent
+      },
+      {
+        path: 'address',
+        component:AddressComponent
       },
       {
         path: 'admin',

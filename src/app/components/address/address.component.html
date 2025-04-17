@@ -1,0 +1,31 @@
+<div style="padding-top: 5rem !important;">
+  <div>
+    <div *ngFor="let address of addressList;let i = index" class="container col-md-6 col-11 border rounded border-primary-subtle mb-3 position-relative">
+      <p class="fw-bolder custom-width">{{address.name}}<br>
+        {{address.pincode}},
+        {{address.area}},
+        {{address.village}},<br>
+        {{address.city}}
+        {{address.state}}<br>
+        {{address.mobilenumber}}<br>
+      </p>
+      <div class="position-absolute custom-detele-place">
+        <button class="btn btn-danger" (click)="RemoveAddress(i)">Delete</button>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="!isAddressOpen" class="container d-flex justify-content-center mt-3">
+    <button class="btn btn-primary" (click)="AddressOpen()">Add New Address</button>
+  </div>
+  <div *ngIf="isAddressOpen" class="container col-md-4 col-10">
+    <input class="form-control mb-3" type="text" #name placeholder="name">
+    <input class="form-control mb-3" type="number" #mobile placeholder="mobilenumber" (input)="limitMobileNumber($event)">
+    <input class="form-control mb-3" type="number" #pincode placeholder="pincode" (input)="limitPincode($event)">
+    <input class="form-control mb-3" type="text" #state placeholder="state" >
+    <input class="form-control mb-3" type="text" #city placeholder="city">
+    <input class="form-control mb-3" type="text" #village placeholder="village">
+    <input class="form-control mb-3" type="text" #area placeholder="area">
+    <button class="btn btn-primary" (click)="AddToAddress(name.value,mobile.value,pincode.value,state.value,city.value,village.value,area.value)">Add to address</button>
+  </div>
+</div>

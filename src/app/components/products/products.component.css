@@ -38,4 +38,10 @@
 .custom-place{
   top: 10px;
   right: 15px;
+  transition: transform 0.5s;
+  cursor: pointer;
+}
+
+.custom-place:hover{
+  transform: scale(1.2);
 }

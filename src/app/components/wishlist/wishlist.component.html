@@ -1,0 +1,6 @@
+<h1 *ngIf="products.length==0" style="padding-top: 5rem !important;" class="text-center fw-bolder">Wishlist is Empty</h1>
+<ng-container *ngIf="products.length>0">
+  <h1  style="padding-top: 5rem !important;" class="text-center fw-bolder">Wishlist</h1>
+  <app-products [products]="products"></app-products>
+  <app-skeleton></app-skeleton>
+</ng-container>

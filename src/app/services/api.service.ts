@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http'
 import { Observable } from 'rxjs';
-import { AllProducts, Auth, ForgetPassword, ForgetPasswordResult, ForgetpasswordToken, ForgetpasswordTokenResult, Login, Message, RegisterAuth } from '../Interfaces/AuthInterface';
+import { AllProducts, Auth, ForgetPassword, ForgetPasswordResult, ForgetpasswordToken, ForgetpasswordTokenResult, Login, Message, OneProduct, RegisterAuth } from '../Interfaces/AuthInterface';
 import { Environment } from '../environment/environment';
 
 @Injectable({
@@ -44,5 +44,13 @@ export class ApiService {
 
   Products():Observable<AllProducts>{
     return this.http.get<AllProducts>(`${this.url}/products`)
+  }
+
+  Product(id:string):Observable<OneProduct>{
+    return this.http.get<OneProduct>(`${this.url}/products/${id}`)
+  }
+
+  UserDetails():Observable<any>{
+    return this.http.get(`${this.url}/userdetails`,{ withCredentials:true })
   }
 }

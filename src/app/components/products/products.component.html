@@ -1,21 +1,21 @@
 <ng-container *ngIf="!isLoading">
   <div class="container py-5">
     <div class="row row-cols-md-3 row-cols-lg-4 row-cols-2 gx-md-5 gy-md-5 gy-3 g-3 my-0">
-        <div class="col" *ngFor="let data of products">
+        <div class="col" *ngFor="let product of products">
             <div class='card border border-0 c_shadow overflow-hidden'>
               <div class="position-relative">
-                <i class="bi bi-heart text-light position-absolute custom-place" (click)="wishlistclicked()"></i>
+                <i class="bi bi-heart position-absolute custom-place" [ngClass]="InWishlist(product) ? 'text-primary':'text-light'" (click)="wishlistclicked(product)"></i>
                 <!-- <img (click)="redirectToProduct(data)" [src]="'https://dq51sxzrefeb3.cloudfront.net/'+data.image" alt="" class='card-img-top image_responsive' style="cursor: pointer;" /> -->
-                <img (click)="redirectToProduct(data)" src="../../../assets/1.jpg" alt="" class='card-img-top image_responsive' style="cursor: pointer;" />
+                <img (click)="redirectToProduct(product)" src="../../../assets/1.jpg" alt="" class='card-img-top image_responsive' style="cursor: pointer;" />
               </div>
                 <div class="card-body rounded transparent_background pt-0">
-                    <p class="card-title my-1 text-truncate">{{data.title}}</p>
+                    <p class="card-title my-1 text-truncate">{{product.title}}</p>
                     <div class="d-flex mb-1 p-0 align-items-center">
                       <i class="bi bi-currency-rupee fw-bold"></i>
-                      <p class="m-0 p-0 fw-bold">{{data.price}}</p>
+                      <p class="m-0 p-0 fw-bold">{{product.price}}</p>
                     </div>
-                    <button *ngIf="!cartItems.includes(data.id)" class="btn btn-primary w-100" (click)="AddToCart(data)">Add to Cart</button>
-                    <button *ngIf="cartItems.includes(data.id)" class="btn btn-dark w-100" routerLink="/cart">Go to Cart</button>
+                    <button *ngIf="!Incart(product)" class="btn btn-primary w-100" (click)="AddToCart(product)">Add to Cart</button>
+                    <button *ngIf="Incart(product)" class="btn btn-dark w-100" routerLink="/cart">Go to Cart</button>
                 </div>
             </div>
         </div>
