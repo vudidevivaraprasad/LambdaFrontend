@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
-import {Store} from '../Store'
+import {LoginUser, LogoutUser, Store} from '../Store'
 import { BehaviorSubject } from 'rxjs';
 import { User } from 'src/app/Interfaces/AuthInterface';
+
+type AuthAction = ReturnType<typeof LoginUser> | ReturnType<typeof LogoutUser>
 
 @Injectable({
   providedIn: 'root'
@@ -23,7 +25,7 @@ export default class AuthDetailsStoreService {
     return this.store.getState().AuthDetails;
   }
 
-  dispatch(action: any) {
+  dispatch(action: AuthAction) {
     this.store.dispatch(action);
   }
 

@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
-import {Store,SetLoading} from '../Store'
+import {Store,SetSkeletonLoading} from '../Store'
 import { BehaviorSubject } from 'rxjs';
-import { User,Loading } from 'src/app/Interfaces/AuthInterface';
+import { Loading } from 'src/app/Interfaces/AuthInterface';
+
+type SkeletingLoadingAction = ReturnType<typeof SetSkeletonLoading>
 
 @Injectable({
   providedIn: 'root'
@@ -23,7 +25,7 @@ export default class SkeletonLoadingDetailsStoreService {
     return this.store.getState().SkeletonLoading;
   }
 
-  dispatch(action: any) {
+  dispatch(action: SkeletingLoadingAction) {
     this.store.dispatch(action);
   }
 

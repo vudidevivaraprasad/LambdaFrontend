@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
-import {Store,AddToWishlist, RemoveFromWishlist} from '../Store'
+import {Store,AddToWishlist, RemoveFromWishlist, ClearWishlist} from '../Store'
 import { BehaviorSubject } from 'rxjs';
 import { Wishlist } from 'src/app/Interfaces/AuthInterface';
 
-type WishlistAction = ReturnType<typeof AddToWishlist> | ReturnType<typeof RemoveFromWishlist>
+type WishlistAction = ReturnType<typeof AddToWishlist> | ReturnType<typeof RemoveFromWishlist> | ReturnType<typeof ClearWishlist>
 
 @Injectable({
   providedIn: 'root'

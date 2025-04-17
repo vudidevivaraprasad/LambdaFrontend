@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
-import {Store} from '../Store'
+import {ClearCart, Store} from '../Store'
 import { BehaviorSubject } from 'rxjs';
 import { Cart } from 'src/app/Interfaces/AuthInterface';
 import {AddToCart,RemoveFromCart} from '../Store'
 
-type CartAction = ReturnType<typeof AddToCart> | ReturnType<typeof RemoveFromCart>
+type CartAction = ReturnType<typeof AddToCart> | ReturnType<typeof RemoveFromCart> | ReturnType<typeof ClearCart>
 
 @Injectable({
   providedIn: 'root'

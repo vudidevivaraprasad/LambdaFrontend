@@ -24,6 +24,9 @@ export const CartSlice = createSlice({
       if(found){
         state.items = state.items.filter(data => data.id!=action.payload.id)
       }
+    },
+    ClearCart: (state) => {
+      state.items = []
     }
   }
 })

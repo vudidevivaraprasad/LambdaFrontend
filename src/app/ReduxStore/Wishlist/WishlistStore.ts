@@ -24,6 +24,9 @@ export const WishlistSlice = createSlice({
       if(found){
         state.items = state.items.filter(data => data.id!=action.payload.id)
       }
+    },
+    ClearWishlist: (state) => {
+      state.items = []
     }
   }
 })

@@ -15,6 +15,9 @@ export const AddressSlice = createSlice({
     },
     RemoveFromAddress : (state,action:PayloadAction<number>) => {
         state.items = state.items.filter((data,index) => index!=action.payload)
+    },
+    ClearAddress: (state) => {
+      state.items = []
     }
   }
 })

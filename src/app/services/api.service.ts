@@ -26,6 +26,10 @@ export class ApiService {
     return this.http.post<Auth>(`${this.url}/login`,details,{withCredentials:true})
   }
 
+  Logout():Observable<Auth>{
+    return this.http.get<Auth>(`${this.url}/logout`,{ withCredentials:true })
+  }
+
   Register(details:Login):Observable<RegisterAuth>{
     return this.http.post<RegisterAuth>(`${this.url}/register`,details,{withCredentials:true})
   }

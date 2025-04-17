@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
-import {Store,AddToAddress,RemoveFromAddress} from '../Store'
+import {Store,AddToAddress,RemoveFromAddress, ClearAddress} from '../Store'
 import { BehaviorSubject } from 'rxjs';
 import { AddressList } from 'src/app/Interfaces/AuthInterface';
 
-type AddressAction = ReturnType<typeof AddToAddress> | ReturnType<typeof RemoveFromAddress>
+type AddressAction = ReturnType<typeof AddToAddress> | ReturnType<typeof RemoveFromAddress> | ReturnType<typeof ClearAddress>
 
 @Injectable({
   providedIn: 'root'

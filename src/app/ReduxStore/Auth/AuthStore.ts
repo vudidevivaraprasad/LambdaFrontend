@@ -16,7 +16,7 @@ export const AuthSlice = createSlice({
         state.isAdmin=action.payload.isAdmin;
       }
     },
-    LogoutUser: (state,action:PayloadAction<{}>) => {
+    LogoutUser: (state) => {
       state.isLogin=false;
       state.isAdmin=false;
     }

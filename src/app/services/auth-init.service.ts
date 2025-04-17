@@ -19,10 +19,10 @@ export class AuthInitService {
       } else if (data.message === 'regular') {
         this.authstore.dispatch(LoginUser({ isLogin: true, isAdmin: false }));
       } else {
-        this.authstore.dispatch(LogoutUser({}));
+        this.authstore.dispatch(LogoutUser());
       }
     } catch (error) {
-      this.authstore.dispatch(LogoutUser({}));
+      this.authstore.dispatch(LogoutUser());
       console.error('Auth init failed:', error);
     }
   }

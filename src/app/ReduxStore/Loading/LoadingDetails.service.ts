@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
 import {Store,SetLoading} from '../Store'
 import { BehaviorSubject } from 'rxjs';
-import { User,Loading } from 'src/app/Interfaces/AuthInterface';
+import { Loading } from 'src/app/Interfaces/AuthInterface';
+
+type LoadingAction = ReturnType<typeof SetLoading>
 
 @Injectable({
   providedIn: 'root'
@@ -23,7 +25,7 @@ export default class LoadingDetailsStoreService {
     return this.store.getState().Loading;
   }
 
-  dispatch(action: any) {
+  dispatch(action: LoadingAction) {
     this.store.dispatch(action);
   }
 
