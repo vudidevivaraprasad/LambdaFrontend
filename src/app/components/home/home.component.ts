@@ -5,6 +5,7 @@ import { Environment } from 'src/app/environment/environment';
 import { Product, User } from 'src/app/Interfaces/AuthInterface';
 import AuthDetailsStoreService from 'src/app/ReduxStore/Auth/AuthDetails.service';
 import LoadingDetailsStoreService from 'src/app/ReduxStore/Loading/LoadingDetails.service'
+import ProductsDetailsStoreService from 'src/app/ReduxStore/Products/ProductDetails.service';
 import {SetLoading} from 'src/app/ReduxStore/Store'
 
 @Component({
@@ -27,265 +28,268 @@ export class HomeComponent implements OnInit {
   isAdmin!:boolean;
   url = this.env.Api
 
-  products:Product[] = [
-      {
-        "image": "1744799238033.jpg",
-        "createdAt": 1744799239931,
-        "price": 100,
-        "description": "just bulb",
-        "id": "7e9bcce4-22a9-4b37-be80-116f98c61fc8",
-        "title": "dev-weather-app",
-        "category": "Grocery",
-        "subcategory": "bulb",
-        "updatedAt": 1744799239931
-      },
-      {
-        "image": "1744799270847.jpg",
-        "createdAt": 1744799272595,
-        "price": 100,
-        "description": "just bulb",
-        "id": "cd6e4b89-ebb4-4050-8e2f-5e3d2f8eb609",
-        "title": "dev-weather-app",
-        "category": "Grocery",
-        "subcategory": "bulb",
-        "updatedAt": 1744799272595
-      },
-      {
-        "image": "1744799302261.jpg",
-        "createdAt": 1744799304020,
-        "price": 100,
-        "description": "just bulb",
-        "id": "d14f24fa-b537-461a-a36b-c4275f8db832",
-        "title": "dev-weather-app",
-        "category": "Grocery",
-        "subcategory": "bulb",
-        "updatedAt": 1744799304020
-      },
-      {
-        "image": "1744799302261.jpg",
-        "createdAt": 1744799304020,
-        "price": 100,
-        "description": "just bulb",
-        "id": "d14f24fa-b537-46",
-        "title": "dev-weather-app",
-        "category": "Grocery",
-        "subcategory": "bulb",
-        "updatedAt": 1744799304020
-      },
-      {
-        "image": "1744799302261.jpg",
-        "createdAt": 1744799304020,
-        "price": 100,
-        "description": "just bulb",
-        "id": "d14f24fa-b537-461",
-        "title": "dev-weather-app",
-        "category": "Grocery",
-        "subcategory": "bulb",
-        "updatedAt": 1744799304020
-      },
-      {
-        "image": "1744799302261.jpg",
-        "createdAt": 1744799304020,
-        "price": 100,
-        "description": "just bulb",
-        "id": "d14f24fa-b537-461a",
-        "title": "dev-weather-app",
-        "category": "Grocery",
-        "subcategory": "bulb",
-        "updatedAt": 1744799304020
-      },
-      {
-        "image": "1744799302261.jpg",
-        "createdAt": 1744799304020,
-        "price": 100,
-        "description": "just bulb",
-        "id": "d14f24fa-b537-461a-",
-        "title": "dev-weather-app",
-        "category": "Grocery",
-        "subcategory": "bulb",
-        "updatedAt": 1744799304020
-      },
-      {
-        "image": "1744799302261.jpg",
-        "createdAt": 1744799304020,
-        "price": 100,
-        "description": "just bulb",
-        "id": "d14f24fa-b537-461a-a",
-        "title": "dev-weather-app",
-        "category": "Grocery",
-        "subcategory": "bulb",
-        "updatedAt": 1744799304020
-      },
-      {
-        "image": "1744799302261.jpg",
-        "createdAt": 1744799304020,
-        "price": 100,
-        "description": "just bulb",
-        "id": "d14f24fa-b537-461a-a3",
-        "title": "dev-weather-app",
-        "category": "Grocery",
-        "subcategory": "bulb",
-        "updatedAt": 1744799304020
-      },
-      {
-        "image": "1744799302261.jpg",
-        "createdAt": 1744799304020,
-        "price": 100,
-        "description": "just bulb",
-        "id": "d14f24fa-b537-461a-a36",
-        "title": "dev-weather-app",
-        "category": "Grocery",
-        "subcategory": "bulb",
-        "updatedAt": 1744799304020
-      },
-      {
-        "image": "1744799302261.jpg",
-        "createdAt": 1744799304020,
-        "price": 100,
-        "description": "just bulb",
-        "id": "d14f24fa-b537-461a-a36b",
-        "title": "dev-weather-app",
-        "category": "Grocery",
-        "subcategory": "bulb",
-        "updatedAt": 1744799304020
-      },
-      {
-        "image": "1744799302261.jpg",
-        "createdAt": 1744799304020,
-        "price": 100,
-        "description": "just bulb",
-        "id": "d14f24fa-b537-461a-a36b-",
-        "title": "dev-weather-app",
-        "category": "Grocery",
-        "subcategory": "bulb",
-        "updatedAt": 1744799304020
-      },
-      {
-        "image": "1744799302261.jpg",
-        "createdAt": 1744799304020,
-        "price": 100,
-        "description": "just bulb",
-        "id": "d14f24fa-b537-461a-a36b-c",
-        "title": "dev-weather-app",
-        "category": "Grocery",
-        "subcategory": "bulb",
-        "updatedAt": 1744799304020
-      },
-      {
-        "image": "1744799302261.jpg",
-        "createdAt": 1744799304020,
-        "price": 100,
-        "description": "just bulb",
-        "id": "d14f24fa-b537-461a-a36b-c4",
-        "title": "dev-weather-app",
-        "category": "Grocery",
-        "subcategory": "bulb",
-        "updatedAt": 1744799304020
-      },
-      {
-        "image": "1744799302261.jpg",
-        "createdAt": 1744799304020,
-        "price": 100,
-        "description": "just bulb",
-        "id": "d14f24fa-b537-461a-a36b-c42",
-        "title": "dev-weather-app",
-        "category": "Grocery",
-        "subcategory": "bulb",
-        "updatedAt": 1744799304020
-      },
-      {
-        "image": "1744799302261.jpg",
-        "createdAt": 1744799304020,
-        "price": 100,
-        "description": "just bulb",
-        "id": "d14f24fa-b537-461a-a36b-c427",
-        "title": "dev-weather-app",
-        "category": "Grocery",
-        "subcategory": "bulb",
-        "updatedAt": 1744799304020
-      },
-      {
-        "image": "1744799302261.jpg",
-        "createdAt": 1744799304020,
-        "price": 100,
-        "description": "just bulb",
-        "id": "d14f24fa-b537-461a-a36b-c4275",
-        "title": "dev-weather-app",
-        "category": "Grocery",
-        "subcategory": "bulb",
-        "updatedAt": 1744799304020
-      },
-      {
-        "image": "1744799302261.jpg",
-        "createdAt": 1744799304020,
-        "price": 100,
-        "description": "just bulb",
-        "id": "d14f24fa-b537-461a-a36b-c4275f",
-        "title": "dev-weather-app",
-        "category": "Grocery",
-        "subcategory": "bulb",
-        "updatedAt": 1744799304020
-      },
-      {
-        "image": "1744799302261.jpg",
-        "createdAt": 1744799304020,
-        "price": 100,
-        "description": "just bulb",
-        "id": "d14f24fa-b537-461a-a36b-c4275f8",
-        "title": "dev-weather-app",
-        "category": "Grocery",
-        "subcategory": "bulb",
-        "updatedAt": 1744799304020
-      },
-      {
-        "image": "1744799302261.jpg",
-        "createdAt": 1744799304020,
-        "price": 100,
-        "description": "just bulb",
-        "id": "d14f24fa-b537-461a-a36b-c4275f8d",
-        "title": "dev-weather-app",
-        "category": "Grocery",
-        "subcategory": "bulb",
-        "updatedAt": 1744799304020
-      },
-      {
-        "image": "1744799302261.jpg",
-        "createdAt": 1744799304020,
-        "price": 100,
-        "description": "just bulb",
-        "id": "d14f24fa-b537-461a-a36b-c4275f8db",
-        "title": "dev-weather-app",
-        "category": "Grocery",
-        "subcategory": "bulb",
-        "updatedAt": 1744799304020
-      },
-      {
-        "image": "1744799302261.jpg",
-        "createdAt": 1744799304020,
-        "price": 100,
-        "description": "just bulb",
-        "id": "d14f24fa-b537-461a-a36b-c4275f8db8",
-        "title": "dev-weather-app",
-        "category": "Grocery",
-        "subcategory": "bulb",
-        "updatedAt": 1744799304020
-      },
-      {
-        "image": "1744799302261.jpg",
-        "createdAt": 1744799304020,
-        "price": 100,
-        "description": "just bulb",
-        "id": "d14f24fa-b537-461a-a36b-c4275f8db83",
-        "title": "dev-weather-app",
-        "category": "Grocery",
-        "subcategory": "bulb",
-        "updatedAt": 1744799304020
-      },
-    ]
+  // products:Product[] = [
+  //     {
+  //       "image": "1744799238033.jpg",
+  //       "createdAt": 1744799239931,
+  //       "price": 100,
+  //       "description": "just bulb",
+  //       "id": "7e9bcce4-22a9-4b37-be80-116f98c61fc8",
+  //       "title": "dev-weather-app",
+  //       "category": "Grocery",
+  //       "subcategory": "bulb",
+  //       "updatedAt": 1744799239931
+  //     },
+  //     {
+  //       "image": "1744799270847.jpg",
+  //       "createdAt": 1744799272595,
+  //       "price": 100,
+  //       "description": "just bulb",
+  //       "id": "cd6e4b89-ebb4-4050-8e2f-5e3d2f8eb609",
+  //       "title": "dev-weather-app",
+  //       "category": "Grocery",
+  //       "subcategory": "bulb",
+  //       "updatedAt": 1744799272595
+  //     },
+  //     {
+  //       "image": "1744799302261.jpg",
+  //       "createdAt": 1744799304020,
+  //       "price": 100,
+  //       "description": "just bulb",
+  //       "id": "d14f24fa-b537-461a-a36b-c4275f8db832",
+  //       "title": "dev-weather-app",
+  //       "category": "Grocery",
+  //       "subcategory": "bulb",
+  //       "updatedAt": 1744799304020
+  //     },
+  //     {
+  //       "image": "1744799302261.jpg",
+  //       "createdAt": 1744799304020,
+  //       "price": 100,
+  //       "description": "just bulb",
+  //       "id": "d14f24fa-b537-46",
+  //       "title": "dev-weather-app",
+  //       "category": "Grocery",
+  //       "subcategory": "bulb",
+  //       "updatedAt": 1744799304020
+  //     },
+  //     {
+  //       "image": "1744799302261.jpg",
+  //       "createdAt": 1744799304020,
+  //       "price": 100,
+  //       "description": "just bulb",
+  //       "id": "d14f24fa-b537-461",
+  //       "title": "dev-weather-app",
+  //       "category": "Grocery",
+  //       "subcategory": "bulb",
+  //       "updatedAt": 1744799304020
+  //     },
+  //     {
+  //       "image": "1744799302261.jpg",
+  //       "createdAt": 1744799304020,
+  //       "price": 100,
+  //       "description": "just bulb",
+  //       "id": "d14f24fa-b537-461a",
+  //       "title": "dev-weather-app",
+  //       "category": "Grocery",
+  //       "subcategory": "bulb",
+  //       "updatedAt": 1744799304020
+  //     },
+  //     {
+  //       "image": "1744799302261.jpg",
+  //       "createdAt": 1744799304020,
+  //       "price": 100,
+  //       "description": "just bulb",
+  //       "id": "d14f24fa-b537-461a-",
+  //       "title": "dev-weather-app",
+  //       "category": "Grocery",
+  //       "subcategory": "bulb",
+  //       "updatedAt": 1744799304020
+  //     },
+  //     {
+  //       "image": "1744799302261.jpg",
+  //       "createdAt": 1744799304020,
+  //       "price": 100,
+  //       "description": "just bulb",
+  //       "id": "d14f24fa-b537-461a-a",
+  //       "title": "dev-weather-app",
+  //       "category": "Grocery",
+  //       "subcategory": "bulb",
+  //       "updatedAt": 1744799304020
+  //     },
+  //     {
+  //       "image": "1744799302261.jpg",
+  //       "createdAt": 1744799304020,
+  //       "price": 100,
+  //       "description": "just bulb",
+  //       "id": "d14f24fa-b537-461a-a3",
+  //       "title": "dev-weather-app",
+  //       "category": "Grocery",
+  //       "subcategory": "bulb",
+  //       "updatedAt": 1744799304020
+  //     },
+  //     {
+  //       "image": "1744799302261.jpg",
+  //       "createdAt": 1744799304020,
+  //       "price": 100,
+  //       "description": "just bulb",
+  //       "id": "d14f24fa-b537-461a-a36",
+  //       "title": "dev-weather-app",
+  //       "category": "Grocery",
+  //       "subcategory": "bulb",
+  //       "updatedAt": 1744799304020
+  //     },
+  //     {
+  //       "image": "1744799302261.jpg",
+  //       "createdAt": 1744799304020,
+  //       "price": 100,
+  //       "description": "just bulb",
+  //       "id": "d14f24fa-b537-461a-a36b",
+  //       "title": "dev-weather-app",
+  //       "category": "Grocery",
+  //       "subcategory": "bulb",
+  //       "updatedAt": 1744799304020
+  //     },
+  //     {
+  //       "image": "1744799302261.jpg",
+  //       "createdAt": 1744799304020,
+  //       "price": 100,
+  //       "description": "just bulb",
+  //       "id": "d14f24fa-b537-461a-a36b-",
+  //       "title": "dev-weather-app",
+  //       "category": "Grocery",
+  //       "subcategory": "bulb",
+  //       "updatedAt": 1744799304020
+  //     },
+  //     {
+  //       "image": "1744799302261.jpg",
+  //       "createdAt": 1744799304020,
+  //       "price": 100,
+  //       "description": "just bulb",
+  //       "id": "d14f24fa-b537-461a-a36b-c",
+  //       "title": "dev-weather-app",
+  //       "category": "Grocery",
+  //       "subcategory": "bulb",
+  //       "updatedAt": 1744799304020
+  //     },
+  //     {
+  //       "image": "1744799302261.jpg",
+  //       "createdAt": 1744799304020,
+  //       "price": 100,
+  //       "description": "just bulb",
+  //       "id": "d14f24fa-b537-461a-a36b-c4",
+  //       "title": "dev-weather-app",
+  //       "category": "Grocery",
+  //       "subcategory": "bulb",
+  //       "updatedAt": 1744799304020
+  //     },
+  //     {
+  //       "image": "1744799302261.jpg",
+  //       "createdAt": 1744799304020,
+  //       "price": 100,
+  //       "description": "just bulb",
+  //       "id": "d14f24fa-b537-461a-a36b-c42",
+  //       "title": "dev-weather-app",
+  //       "category": "Grocery",
+  //       "subcategory": "bulb",
+  //       "updatedAt": 1744799304020
+  //     },
+  //     {
+  //       "image": "1744799302261.jpg",
+  //       "createdAt": 1744799304020,
+  //       "price": 100,
+  //       "description": "just bulb",
+  //       "id": "d14f24fa-b537-461a-a36b-c427",
+  //       "title": "dev-weather-app",
+  //       "category": "Grocery",
+  //       "subcategory": "bulb",
+  //       "updatedAt": 1744799304020
+  //     },
+  //     {
+  //       "image": "1744799302261.jpg",
+  //       "createdAt": 1744799304020,
+  //       "price": 100,
+  //       "description": "just bulb",
+  //       "id": "d14f24fa-b537-461a-a36b-c4275",
+  //       "title": "dev-weather-app",
+  //       "category": "Grocery",
+  //       "subcategory": "bulb",
+  //       "updatedAt": 1744799304020
+  //     },
+  //     {
+  //       "image": "1744799302261.jpg",
+  //       "createdAt": 1744799304020,
+  //       "price": 100,
+  //       "description": "just bulb",
+  //       "id": "d14f24fa-b537-461a-a36b-c4275f",
+  //       "title": "dev-weather-app",
+  //       "category": "Grocery",
+  //       "subcategory": "bulb",
+  //       "updatedAt": 1744799304020
+  //     },
+  //     {
+  //       "image": "1744799302261.jpg",
+  //       "createdAt": 1744799304020,
+  //       "price": 100,
+  //       "description": "just bulb",
+  //       "id": "d14f24fa-b537-461a-a36b-c4275f8",
+  //       "title": "dev-weather-app",
+  //       "category": "Grocery",
+  //       "subcategory": "bulb",
+  //       "updatedAt": 1744799304020
+  //     },
+  //     {
+  //       "image": "1744799302261.jpg",
+  //       "createdAt": 1744799304020,
+  //       "price": 100,
+  //       "description": "just bulb",
+  //       "id": "d14f24fa-b537-461a-a36b-c4275f8d",
+  //       "title": "dev-weather-app",
+  //       "category": "Grocery",
+  //       "subcategory": "bulb",
+  //       "updatedAt": 1744799304020
+  //     },
+  //     {
+  //       "image": "1744799302261.jpg",
+  //       "createdAt": 1744799304020,
+  //       "price": 100,
+  //       "description": "just bulb",
+  //       "id": "d14f24fa-b537-461a-a36b-c4275f8db",
+  //       "title": "dev-weather-app",
+  //       "category": "Grocery",
+  //       "subcategory": "bulb",
+  //       "updatedAt": 1744799304020
+  //     },
+  //     {
+  //       "image": "1744799302261.jpg",
+  //       "createdAt": 1744799304020,
+  //       "price": 100,
+  //       "description": "just bulb",
+  //       "id": "d14f24fa-b537-461a-a36b-c4275f8db8",
+  //       "title": "dev-weather-app",
+  //       "category": "Grocery",
+  //       "subcategory": "bulb",
+  //       "updatedAt": 1744799304020
+  //     },
+  //     {
+  //       "image": "1744799302261.jpg",
+  //       "createdAt": 1744799304020,
+  //       "price": 100,
+  //       "description": "just bulb",
+  //       "id": "d14f24fa-b537-461a-a36b-c4275f8db83",
+  //       "title": "dev-weather-app",
+  //       "category": "Grocery",
+  //       "subcategory": "bulb",
+  //       "updatedAt": 1744799304020
+  //     },
+  //   ]
 
-  constructor(private http:HttpClient,private authdetails:AuthDetailsStoreService,private loading:LoadingDetailsStoreService,private env:Environment){}
+  products:Product[] = []
+
+  constructor(private http:HttpClient,private authdetails:AuthDetailsStoreService,private loading:LoadingDetailsStoreService,private env:Environment,private product:ProductsDetailsStoreService){}
 
   ngOnInit(): void {
+    this.product.state$.subscribe(data => this.products = data.result)
     this.isAuth$ = this.authdetails.state$
     this.isAuth$.subscribe(user => {
       console.log('Updated user state in home:', user);

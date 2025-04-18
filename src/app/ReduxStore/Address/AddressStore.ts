@@ -1,5 +1,7 @@
+import { inject } from "@angular/core";
 import { configureStore, createSlice, createStore, PayloadAction } from "@reduxjs/toolkit";
 import { Address, AddressList, Cart,Product } from "src/app/Interfaces/AuthInterface";
+import { ApiService } from "src/app/services/api.service";
 
 
 const initialState:AddressList = {
@@ -13,8 +15,8 @@ export const AddressSlice = createSlice({
     AddToAddress: (state,action:PayloadAction<Address>) => {
         state.items = [...state.items,action.payload]
     },
-    RemoveFromAddress : (state,action:PayloadAction<number>) => {
-        state.items = state.items.filter((data,index) => index!=action.payload)
+    RemoveFromAddress : (state,action:PayloadAction<Address>) => {
+        state.items = state.items.filter(data => data.id!=action.payload.id)
     },
     ClearAddress: (state) => {
       state.items = []

@@ -25,11 +25,11 @@ export class AddressComponent implements OnInit {
   }
 
   AddToAddress(name:string,mobilenumber:string,pincode:string,state:string,city:string,village:string,area:string){
-    this.address.dispatch(AddToAddress({name,mobilenumber:parseInt(mobilenumber),pincode:parseInt(pincode),state,city,village,area}))
+    this.address.dispatch(AddToAddress({id:Date.now(),name,mobilenumber:parseInt(mobilenumber),pincode:parseInt(pincode),state,city,village,area}))
     this.isAddressOpen = false
   }
 
-  RemoveAddress(i:number){
+  RemoveAddress(i:Address){
     this.address.dispatch(RemoveFromAddress(i))
   }
   limitPincode(pincode:Event){

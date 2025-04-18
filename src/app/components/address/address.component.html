@@ -1,6 +1,6 @@
 <div style="padding-top: 5rem !important;">
   <div>
-    <div *ngFor="let address of addressList;let i = index" class="container col-md-6 col-11 border rounded border-primary-subtle mb-3 position-relative">
+    <div *ngFor="let address of addressList" class="container col-md-6 col-11 border rounded border-primary-subtle mb-3 position-relative">
       <p class="fw-bolder custom-width">{{address.name}}<br>
         {{address.pincode}},
         {{address.area}},
@@ -10,7 +10,7 @@
         {{address.mobilenumber}}<br>
       </p>
       <div class="position-absolute custom-detele-place">
-        <button class="btn btn-danger" (click)="RemoveAddress(i)">Delete</button>
+        <button class="btn btn-danger" (click)="RemoveAddress(address)">Delete</button>
       </div>
     </div>
   </div>

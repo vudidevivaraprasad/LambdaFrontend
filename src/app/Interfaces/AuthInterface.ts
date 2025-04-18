@@ -54,6 +54,18 @@ export interface Cart{
   items:Product[]
 }
 
+export interface CartFromBackend{
+  result:string[]
+}
+
+export interface WishlistFromBackend{
+  result:string[]
+}
+
+export interface AddressFromBackend{
+  result:Address[]
+}
+
 export interface AllProducts{
   result: Product[]
 }
@@ -83,6 +95,7 @@ export interface AddressList{
 }
 
 export interface Address{
+  id:number,
   name:string,
   mobilenumber:number,
   pincode:number,
@@ -90,4 +103,12 @@ export interface Address{
   city:string,
   village:string,
   area?:string
+}
+
+export interface UserDetails{
+  data:{
+    address:Address[],
+    wishlist:string[],
+    cart:string[]
+  }
 }

@@ -1,34 +1,33 @@
 import { Injectable } from '@angular/core';
-import {Store,SetLoading} from '../Store'
+import {Store,AddProduct} from '../Store'
 import { BehaviorSubject } from 'rxjs';
-import { User,Loading, Cart } from 'src/app/Interfaces/AuthInterface';
-import {AddToCart,RemoveFromCart} from '../Store'
+import { AllProducts } from 'src/app/Interfaces/AuthInterface';
 
-type CartAction = ReturnType<typeof AddToCart> | ReturnType<typeof RemoveFromCart>
+type ProductsAction = ReturnType<typeof AddProduct>
 
 @Injectable({
   providedIn: 'root'
 })
 
 
-export default class CartDetailsStoreService {
+export default class ProductsDetailsStoreService {
   private store = Store;
 
-  private stateSubject = new BehaviorSubject<Cart>(this.store.getState().Cart);
+  private stateSubject = new BehaviorSubject<AllProducts>(this.store.getState().Products);
   public state$ = this.stateSubject.asObservable();
 
   constructor() {
     this.store.subscribe(() => {
-      const state = this.store.getState().Cart;
+      const state = this.store.getState().Products;
       this.stateSubject.next(state);
     });
   }
 
   getState() {
-    return this.store.getState().Cart;
+    return this.store.getState().Products;
   }
 
-  dispatch(action: CartAction) {
+  dispatch(action: ProductsAction) {
     this.store.dispatch(action);
   }
 

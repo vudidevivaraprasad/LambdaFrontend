@@ -1,29 +1,17 @@
 import { configureStore, createSlice, createStore, PayloadAction } from "@reduxjs/toolkit";
-import { Cart,Product } from "src/app/Interfaces/AuthInterface";
+import { AllProducts, Cart,Product } from "src/app/Interfaces/AuthInterface";
 
 
-const initialState:Cart = {
-  items:[]
+const initialState:AllProducts = {
+  result:[]
 }
 
-export const CartSlice = createSlice({
+export const ProductsSlice = createSlice({
   name: 'CartDetails',
   initialState,
   reducers:{
-    AddToCart: (state,action:PayloadAction<Product>) => {
-      const found = state.items.find(item => item.id === action.payload.id)
-      console.log('found',found)
-      if(!found){
-        state.items = [...state.items,action.payload]
-      }
-    },
-    RemoveFromCart : (state,action:PayloadAction<Product>) => {
-      console.log('state',state.items)
-      console.log('action',action.payload)
-      const found = state.items.find(item => item.id === action.payload.id)
-      if(found){
-        state.items = state.items.filter(data => data.id!=action.payload.id)
-      }
+    AddProduct: (state,action:PayloadAction<Product>) => {
+        state.result = [...state.result,action.payload]
     }
   }
 })

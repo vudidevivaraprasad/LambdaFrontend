@@ -5,8 +5,8 @@
             <div class='card border border-0 c_shadow overflow-hidden'>
               <div class="position-relative">
                 <i class="bi bi-heart position-absolute custom-place" [ngClass]="InWishlist(product) ? 'text-primary':'text-light'" (click)="wishlistclicked(product)"></i>
-                <!-- <img (click)="redirectToProduct(data)" [src]="'https://dq51sxzrefeb3.cloudfront.net/'+data.image" alt="" class='card-img-top image_responsive' style="cursor: pointer;" /> -->
-                <img (click)="redirectToProduct(product)" src="../../../assets/1.jpg" alt="" class='card-img-top image_responsive' style="cursor: pointer;" />
+                <img (click)="redirectToProduct(product)" [src]="'https://dq51sxzrefeb3.cloudfront.net/'+product.image" alt="" class='card-img-top image_responsive' style="cursor: pointer;" />
+                <!-- <img (click)="redirectToProduct(product)" src="../../../assets/1.jpg" alt="" class='card-img-top image_responsive' style="cursor: pointer;" /> -->
               </div>
                 <div class="card-body rounded transparent_background pt-0">
                     <p class="card-title my-1 text-truncate">{{product.title}}</p>

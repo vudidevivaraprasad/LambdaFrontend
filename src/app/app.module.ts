@@ -101,12 +101,12 @@ export function authInitializer(authInitService: AuthInitService) {
     ])
   ],
   providers: [
-    // {
-    //   provide: APP_INITIALIZER,
-    //   useFactory: authInitializer,
-    //   deps: [AuthInitService],
-    //   multi: true
-    // }
+    {
+      provide: APP_INITIALIZER,
+      useFactory: authInitializer,
+      deps: [AuthInitService],
+      multi: true
+    }
   ],
   bootstrap: [AppComponent]
 })

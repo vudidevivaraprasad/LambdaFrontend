@@ -5,6 +5,7 @@ import { SkeletonLoadingSlice } from "./SkeletonLoading/SkeletonLoadingStore";
 import { CartSlice } from "./Cart/CartStore";
 import { WishlistSlice } from "./Wishlist/WishlistStore";
 import { AddressSlice } from "./Address/AddressStore";
+import { ProductsSlice } from "./Products/ProductsStore";
 
 export const Store = configureStore({
   reducer:{
@@ -13,7 +14,8 @@ export const Store = configureStore({
     SkeletonLoading:SkeletonLoadingSlice.reducer,
     Cart: CartSlice.reducer,
     Wishlist: WishlistSlice.reducer,
-    Address: AddressSlice.reducer
+    Address: AddressSlice.reducer,
+    Products: ProductsSlice.reducer
   },
   devTools:true
 })
@@ -24,3 +26,4 @@ export const {SetSkeletonLoading} = SkeletonLoadingSlice.actions
 export const {AddToCart,RemoveFromCart,ClearCart} = CartSlice.actions
 export const {AddToWishlist,RemoveFromWishlist,ClearWishlist} = WishlistSlice.actions
 export const {AddToAddress,RemoveFromAddress,ClearAddress} = AddressSlice.actions
+export const {AddProduct} = ProductsSlice.actions

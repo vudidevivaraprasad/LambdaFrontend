@@ -31,13 +31,13 @@ export class ProductsComponent implements OnInit {
     //     this.products = data.result
     //     this.loading.dispatch(SetSkeletonLoading({isLoading:false}))
     // },err =>         this.loading.dispatch(SetSkeletonLoading({isLoading:false})))
-    setTimeout(() => {
-      this.loading.dispatch(SetSkeletonLoading({isLoading:true}))
-      setTimeout(() => {
+    // setTimeout(() => {
+    //   this.loading.dispatch(SetSkeletonLoading({isLoading:true}))
+    //   setTimeout(() => {
 
-        this.loading.dispatch(SetSkeletonLoading({isLoading:false}))
-      }, 1000);
-    }, 100);
+    //     this.loading.dispatch(SetSkeletonLoading({isLoading:false}))
+    //   }, 1000);
+    // }, 100);
   }
 
   redirectToProduct(data:Product){
