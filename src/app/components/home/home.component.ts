@@ -6,7 +6,7 @@ import { Product, User } from 'src/app/Interfaces/AuthInterface';
 import AuthDetailsStoreService from 'src/app/ReduxStore/Auth/AuthDetails.service';
 import LoadingDetailsStoreService from 'src/app/ReduxStore/Loading/LoadingDetails.service'
 import ProductsDetailsStoreService from 'src/app/ReduxStore/Products/ProductDetails.service';
-import {SetLoading} from 'src/app/ReduxStore/Store'
+import {AddProduct, SetLoading,Store} from 'src/app/ReduxStore/Store'
 
 @Component({
   selector: 'app-home',
@@ -14,6 +14,7 @@ import {SetLoading} from 'src/app/ReduxStore/Store'
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
+  store = Store;
   login_data = {
     mail:'',
     password:''
@@ -290,9 +291,9 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.product.state$.subscribe(data => this.products = data.result)
+    // this.products.map(product => this.store.dispatch(AddProduct(product)))
     this.isAuth$ = this.authdetails.state$
     this.isAuth$.subscribe(user => {
-      console.log('Updated user state in home:', user);
       this.isAdmin=user.isAdmin
       this.isLogin=user.isLogin
     });

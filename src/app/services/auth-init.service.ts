@@ -27,7 +27,7 @@ export class AuthInitService {
         this.authstore.dispatch(LogoutUser());
       }
 
-      if(data.message === 'admin' || 'regular'){
+      if(data.message === 'admin' || data.message === 'regular'){
         const userdetails = await firstValueFrom(this.api.UserDetails())
         userdetails.data.cart.map(item => {
           const product = this.productservice.getState().result.find(product => product.id === item)

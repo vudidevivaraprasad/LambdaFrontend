@@ -1,0 +1,14 @@
+<p style="padding-top: 5rem !important;">Select Address</p>
+<ng-container *ngIf="step1">
+  <app-address (selectedAddress)="selectedaddress($event)" [selectedaddressId]="address.id"></app-address>
+  <p *ngIf="!isaddressselected" class="text-center text-danger">Please select an address</p>
+  <div class="d-flex justify-content-center mt-3">
+    <button class="btn btn-dark w-25" (click)="verifystep1()">Next</button>
+  </div>
+</ng-container>
+<ng-container *ngIf="step2">
+  <div class="d-flex flex-column justify-content-center align-items-center">
+    <button class="btn btn-dark" (click)="firststepvisible()">Back</button><br>
+    <button class="btn btn-primary" (click)="checkout()">Place Order</button>
+  </div>
+</ng-container>

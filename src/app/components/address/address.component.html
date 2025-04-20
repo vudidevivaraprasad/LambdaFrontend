@@ -1,16 +1,21 @@
 <div style="padding-top: 5rem !important;">
   <div>
     <div *ngFor="let address of addressList" class="container col-md-6 col-11 border rounded border-primary-subtle mb-3 position-relative">
-      <p class="fw-bolder custom-width">{{address.name}}<br>
-        {{address.pincode}},
-        {{address.area}},
-        {{address.village}},<br>
-        {{address.city}}
-        {{address.state}}<br>
-        {{address.mobilenumber}}<br>
-      </p>
-      <div class="position-absolute custom-detele-place">
-        <button class="btn btn-danger" (click)="RemoveAddress(address)">Delete</button>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="radioDefault" [id]="address.id" (input)="selectedaddress(address)" [checked]="address.id === selectedaddressId">
+        <label [for]="address.id">
+          <p class="fw-bolder custom-width form-check-label">{{address.name}}<br>
+            {{address.pincode}},
+            {{address.area}},
+            {{address.village}},<br>
+            {{address.city}}
+            {{address.state}}<br>
+            {{address.mobilenumber}}<br>
+          </p>
+          <div class="position-absolute custom-detele-place">
+            <button class="btn btn-danger" (click)="RemoveAddress(address)">Delete</button>
+          </div>
+        </label>
       </div>
     </div>
   </div>

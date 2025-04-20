@@ -112,3 +112,33 @@ export interface UserDetails{
     cart:string[]
   }
 }
+
+export interface Checkout{
+  address:Address,
+  amount:number[],
+  quantity:number[],
+  products:string[]
+}
+
+export interface Order{
+  order_id: string,
+  Date: number,
+  product: Orderproduct,
+  status: string,
+  address:Address
+}
+
+export interface Orderproduct{
+  amount: number,
+  product_id: string,
+  quantity: number
+}
+export interface Orders{
+  result:Order[]
+}
+
+export interface OrderingProductInfo{
+  product_id:string,
+  amount:number,
+  quantity:number
+}

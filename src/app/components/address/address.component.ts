@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { Address } from 'src/app/Interfaces/AuthInterface';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Address, Product } from 'src/app/Interfaces/AuthInterface';
 import AddressDetailsStoreService from 'src/app/ReduxStore/Address/AddressDetails.service';
 import { AddToAddress, RemoveFromAddress } from 'src/app/ReduxStore/Store';
 
@@ -10,6 +10,9 @@ import { AddToAddress, RemoveFromAddress } from 'src/app/ReduxStore/Store';
 })
 export class AddressComponent implements OnInit {
 
+  @Input() selectedaddressId?:number;
+  @Output() selectedAddress = new EventEmitter<Address>();
+
   addressList:Address[] = []
 
   constructor(private address:AddressDetailsStoreService){}
@@ -19,6 +22,10 @@ export class AddressComponent implements OnInit {
   }
 
   isAddressOpen:boolean = false
+
+  selectedaddress(address:Address){
+    this.selectedAddress.emit(address)
+  }
 
   AddressOpen(){
     this.isAddressOpen = true

@@ -22,6 +22,7 @@ import { AdminComponent } from './components/admin/admin.component';
 import { WishlistComponent } from './components/wishlist/wishlist.component';
 import { AddressComponent } from './components/address/address.component';
 import { OrdersComponent } from './components/orders/orders.component';
+import { CheckoutComponent } from './components/checkout/checkout.component';
 
 export function authInitializer(authInitService: AuthInitService) {
   return () => authInitService.init();
@@ -44,7 +45,8 @@ export function authInitializer(authInitService: AuthInitService) {
     AdminComponent,
     WishlistComponent,
     AddressComponent,
-    OrdersComponent
+    OrdersComponent,
+    CheckoutComponent
   ],
   imports: [
     BrowserModule,
@@ -97,6 +99,14 @@ export function authInitializer(authInitService: AuthInitService) {
       {
         path: 'admin',
         component: AdminComponent
+      },
+      {
+        path: 'checkout',
+        component: CheckoutComponent
+      },
+      {
+        path: 'orders',
+        component: OrdersComponent
       }
     ])
   ],

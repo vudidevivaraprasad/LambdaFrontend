@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Product } from 'src/app/Interfaces/AuthInterface';
+import { OrderingProductInfo, Product } from 'src/app/Interfaces/AuthInterface';
 import CartDetailsStoreService from 'src/app/ReduxStore/Cart/CartDetails.service';
 import LoadingDetailsStoreService from 'src/app/ReduxStore/Loading/LoadingDetails.service';
 import { AddToCart, SetLoading } from 'src/app/ReduxStore/Store';
@@ -16,6 +16,7 @@ export class ProductComponent implements OnInit {
   data:any;
   cartItems:Product[] = []
   productId:string|null = ''
+  quantity:number = 1
 
   constructor(private route:Router,private activeroute:ActivatedRoute,private cart:CartDetailsStoreService,private loading:LoadingDetailsStoreService,private api:ApiService){
     console.log('data',this.route.getCurrentNavigation()?.extras.state)
@@ -35,6 +36,15 @@ export class ProductComponent implements OnInit {
     }
   }
   this.cart.state$.subscribe(data => this.cartItems = data.items)
+ }
+
+ CheckoutPage(data:Product){
+  const state:OrderingProductInfo[] = [{
+    product_id:data.id,
+    amount:data.price,
+    quantity:this.quantity
+  }]
+  this.route.navigate(['/checkout'],{ state:state})
  }
 
  Incart(product:Product){

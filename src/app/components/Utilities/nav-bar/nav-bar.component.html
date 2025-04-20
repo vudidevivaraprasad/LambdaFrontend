@@ -30,6 +30,7 @@
     <div class="list-group">
       <a routerLink="/wishlist" class="list-group-item list-group-item-action" style="padding-right: 4rem !important;">Wishlist</a>
       <a routerLink="/address" class="list-group-item list-group-item-action" style="padding-right: 4rem !important;">Address</a>
+      <a routerLink="/orders" class="list-group-item list-group-item-action" style="padding-right: 4rem !important;">Orders</a>
       <a *ngIf="isAdmin" routerLink="/admin" class="list-group-item list-group-item-action" style="padding-right: 4rem !important;">Admin</a>
       <button *ngIf="isLogin" class="list-group-item list-group-item-action" style="padding-right: 4rem !important;" (click)="logout()">Logout</button>
     </div>
