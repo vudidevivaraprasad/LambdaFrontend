@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http'
 import { Observable } from 'rxjs';
-import { Address, AddressFromBackend, AllProducts, Auth, CartFromBackend, Checkout, ForgetPassword, ForgetPasswordResult, ForgetpasswordToken, ForgetpasswordTokenResult, Login, Message, OneProduct, Orders, RegisterAuth, UserDetails, WishlistFromBackend } from '../Interfaces/AuthInterface';
+import { Address, AddressFromBackend, AllProducts, Auth, CartFromBackend, Checkout, ForgetPassword, ForgetPasswordResult, ForgetpasswordToken, ForgetpasswordTokenResult, Login, Message, OneProduct, Order, Orders, RegisterAuth, UserDetails, WishlistFromBackend } from '../Interfaces/AuthInterface';
 import { Environment } from '../environment/environment';
 
 @Injectable({
@@ -120,5 +120,8 @@ export class ApiService {
   }
   Orders():Observable<Orders>{
     return this.http.get<Orders>(`${this.url}/orders`,{withCredentials:true})
+  }
+  AllOrders():Observable<Orders>{
+    return this.http.get<Orders>(`${this.url}/allorders`,{withCredentials:true})
   }
 }

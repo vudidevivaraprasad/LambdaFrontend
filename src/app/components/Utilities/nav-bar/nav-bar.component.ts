@@ -42,6 +42,7 @@ export class NavBarComponent implements OnInit {
     this.address.dispatch(ClearAddress())
     this.wishlist.dispatch(ClearWishlist())
     this.api.Logout().subscribe(data => console.log('data'))
+    this.route.navigate(['/home'])
   }
 
 

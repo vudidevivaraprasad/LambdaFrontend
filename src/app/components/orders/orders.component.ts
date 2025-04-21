@@ -23,8 +23,8 @@ export class OrdersComponent implements OnInit {
     this.api.Orders()
       .subscribe(data => {
         this.orders = data.result
+        this.loading.dispatch(SetLoading({isLoading:false}))
         this.orders.map(order => {
-          this.loading.dispatch(SetLoading({isLoading:false}))
             const found = this.product.getState().result.find(product => product.id === order.product.product_id)
             found?this.products.push(found):''
           })
@@ -42,6 +42,10 @@ export class OrdersComponent implements OnInit {
 
   redirecttoproduct(product:Product){
     this.route.navigate([`/product/${product.id}`],{ state: {data:product}})
+  }
+
+  TotalAmount(quantity:number,amount:number){
+    return quantity*amount
   }
 
 }

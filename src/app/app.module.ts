@@ -23,6 +23,9 @@ import { WishlistComponent } from './components/wishlist/wishlist.component';
 import { AddressComponent } from './components/address/address.component';
 import { OrdersComponent } from './components/orders/orders.component';
 import { CheckoutComponent } from './components/checkout/checkout.component';
+import { adminGuard } from './Guard/admin/admin.guard';
+import { loginGuard } from './Guard/Login/login.guard';
+import { AllOrdersComponent } from './components/all-orders/all-orders.component';
 
 export function authInitializer(authInitService: AuthInitService) {
   return () => authInitService.init();
@@ -46,7 +49,8 @@ export function authInitializer(authInitService: AuthInitService) {
     WishlistComponent,
     AddressComponent,
     OrdersComponent,
-    CheckoutComponent
+    CheckoutComponent,
+    AllOrdersComponent
   ],
   imports: [
     BrowserModule,
@@ -64,12 +68,12 @@ export function authInitializer(authInitService: AuthInitService) {
       },
       {
         path:'login',
-        canActivate:[authGuard],
+        canActivate:[loginGuard],
         component:LoginComponent
       },
       {
         path:'register',
-        canActivate:[authGuard],
+        canActivate:[loginGuard],
         component:RegisterComponent
       },
       {
@@ -98,15 +102,22 @@ export function authInitializer(authInitService: AuthInitService) {
       },
       {
         path: 'admin',
+        canActivate: [authGuard,adminGuard],
         component: AdminComponent
       },
       {
         path: 'checkout',
+        canActivate:[authGuard],
         component: CheckoutComponent
       },
       {
         path: 'orders',
+        canActivate:[authGuard],
         component: OrdersComponent
+      },
+      {
+        path:'all',
+        component:AllOrdersComponent
       }
     ])
   ],

@@ -1,0 +1,24 @@
+<div style="padding-top: 5rem !important;">
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">ORDER ID</th>
+        <th scope="col">PRODUCT NAME</th>
+        <th scope="col">QUANTITY</th>
+        <th scope="col">AMOUNT</th>
+        <th scope="col">TOTAL AMOUNT</th>
+        <th scope="col">ADDRESS</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let order of orders">
+        <th scope="row">{{order.order_id}}</th>
+        <td>{{order.product.product_id}}</td>
+        <td>{{order.product.quantity}}</td>
+        <td>{{order.product.amount}}</td>
+        <td>{{order.product.quantity * order.product.amount}}</td>
+        <td>{{order.address.area}},{{order.address.city}},{{order.address.mobilenumber}},{{order.address.name}},{{order.address.pincode}},{{order.address.state}},{{order.address.village}}/</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

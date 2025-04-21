@@ -1,4 +1,4 @@
-<p style="padding-top: 5rem !important;">Select Address</p>
+<p style="padding-top: 5rem !important;"></p>
 <ng-container *ngIf="step1">
   <app-address (selectedAddress)="selectedaddress($event)" [selectedaddressId]="address.id"></app-address>
   <p *ngIf="!isaddressselected" class="text-center text-danger">Please select an address</p>
