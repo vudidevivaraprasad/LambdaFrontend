@@ -26,7 +26,13 @@
   <button (click)="submit2()">submit2</button>
 </form> -->
 
-<form ngForm style="padding-top: 5rem !important;">
+<div style="padding-top: 5rem !important;">
+  <button class="btn btn-primary" routerLink="addproduct">Add Product</button>
+  <button class="btn btn-primary" routerLink="allorders">All Orders</button>
+</div>
+<router-outlet></router-outlet>
+
+<!-- <form ngForm style="padding-top: 5rem !important;">
   <div class="container col-md-4 col-10">
     <input class="form-control mb-3" type="text" #pincode placeholder="Name" name="name" [(ngModel)]="product_data.title">
     <input class="form-control mb-3" type="number" #city placeholder="Amount" name="amount" [(ngModel)]="product_data.price">
@@ -41,4 +47,4 @@
     <input class="form-control mb-3" type="file" name="file" (change)="onchange($event)">
     <button class="btn btn-primary" (click)="onsubmit()">Add Product</button>
   </div>
-</form>
+</form> -->

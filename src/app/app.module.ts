@@ -26,6 +26,7 @@ import { CheckoutComponent } from './components/checkout/checkout.component';
 import { adminGuard } from './Guard/admin/admin.guard';
 import { loginGuard } from './Guard/Login/login.guard';
 import { AllOrdersComponent } from './components/all-orders/all-orders.component';
+import { AddproductComponent } from './components/addproduct/addproduct.component';
 
 export function authInitializer(authInitService: AuthInitService) {
   return () => authInitService.init();
@@ -50,7 +51,8 @@ export function authInitializer(authInitService: AuthInitService) {
     AddressComponent,
     OrdersComponent,
     CheckoutComponent,
-    AllOrdersComponent
+    AllOrdersComponent,
+    AddproductComponent
   ],
   imports: [
     BrowserModule,
@@ -103,7 +105,17 @@ export function authInitializer(authInitService: AuthInitService) {
       {
         path: 'admin',
         canActivate: [authGuard,adminGuard],
-        component: AdminComponent
+        component: AdminComponent,
+        children:[
+          {
+            path:'addproduct',
+            component:AddproductComponent
+          },
+          {
+            path:'allorders',
+            component:AllOrdersComponent
+          }
+        ]
       },
       {
         path: 'checkout',

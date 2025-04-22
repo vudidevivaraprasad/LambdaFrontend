@@ -1,0 +1,16 @@
+<form ngForm style="padding-top: 5rem !important;">
+  <div class="container col-md-4 col-10">
+    <input class="form-control mb-3" type="text" #pincode placeholder="Name" name="name" [(ngModel)]="product_data.title">
+    <input class="form-control mb-3" type="number" #city placeholder="Amount" name="amount" [(ngModel)]="product_data.price">
+    <input class="form-control mb-3" type="text" #state placeholder="Details" name="details" [(ngModel)]="product_data.description">
+    <label for="mySelect" class="form-label">Select Category</label>
+    <select id="mySelect" class="form-select mb-3" aria-label="Default select example" name="category" [(ngModel)]="product_data.category">
+      <option value="Shirts">Shirts</option>
+      <option value="Pants">Tshirts</option>
+      <option value="Trousers">Trousers</option>
+    </select>
+    <input class="form-control mb-3" type="text" #mobile placeholder="Subcategory" name="subcategory" [(ngModel)]="product_data.subcategory">
+    <input class="form-control mb-3" type="file" name="file" (change)="onchange($event)">
+    <button class="btn btn-primary" (click)="onsubmit()">Add Product</button>
+  </div>
+</form>
