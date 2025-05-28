@@ -30,8 +30,8 @@ export class CheckoutComponent implements OnInit {
       this.productslist.push(i.product_id)
     })
     console.log('amountlist',this.amountlist)
-    console.log('amountlist',this.quantitylist)
-    console.log('amountlist',this.productslist)
+    console.log('quantitylist',this.quantitylist)
+    console.log('productslist',this.productslist)
   }
 
   ngOnInit(): void {

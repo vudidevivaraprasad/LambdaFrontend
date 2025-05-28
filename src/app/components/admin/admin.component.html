@@ -26,9 +26,11 @@
   <button (click)="submit2()">submit2</button>
 </form> -->
 
-<div style="padding-top: 5rem !important;">
-  <button class="btn btn-primary" routerLink="addproduct">Add Product</button>
-  <button class="btn btn-primary" routerLink="allorders">All Orders</button>
+<div style="padding-top: 5rem !important;" class="d-flex align-items-center justify-content-center">
+  <div>
+    <button class="btn btn-primary me-1" routerLink="addproduct">Add Product</button>
+    <button class="btn btn-primary ms-1" routerLink="allorders">All Orders</button>
+  </div>
 </div>
 <router-outlet></router-outlet>
 
