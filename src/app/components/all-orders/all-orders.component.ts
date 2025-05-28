@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Order } from 'src/app/Interfaces/AuthInterface';
+import LoadingDetailsStoreService from 'src/app/ReduxStore/Loading/LoadingDetails.service';
+import {SetLoading} from 'src/app/ReduxStore/Store'
 import { ApiService } from 'src/app/services/api.service';
 
 @Component({
@@ -10,6 +12,7 @@ import { ApiService } from 'src/app/services/api.service';
 export class AllOrdersComponent implements OnInit {
 
   orders:Order[] = []
+  loader:boolean = false;
 //   orders:Order[] = [
 //     {
 //         "product": {
@@ -52,10 +55,17 @@ export class AllOrdersComponent implements OnInit {
 //         "status": "pending"
 //     }
 // ]
-  constructor(private api:ApiService){}
+  constructor(private api:ApiService,private loading:LoadingDetailsStoreService){
+
+    this.loading.state$.subscribe(data => this.loader = data.isLoading)
+  }
 
   ngOnInit(): void {
-    this.api.AllOrders().subscribe(data => this.orders = data.result)
+    this.loading.dispatch(SetLoading({isLoading:true}))
+    this.api.AllOrders().subscribe(data => {
+      this.orders = data.result
+      this.loading.dispatch(SetLoading({isLoading:false}))
+    })
   }
 
 }
