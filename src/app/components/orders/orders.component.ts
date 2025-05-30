@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Subject, takeUntil } from 'rxjs';
 import { Order, Orders, Product } from 'src/app/Interfaces/AuthInterface';
 import LoadingDetailsStoreService from 'src/app/ReduxStore/Loading/LoadingDetails.service';
 import ProductsDetailsStoreService from 'src/app/ReduxStore/Products/ProductDetails.service';
@@ -11,16 +12,18 @@ import { ApiService } from 'src/app/services/api.service';
   templateUrl: './orders.component.html',
   styleUrls: ['./orders.component.css']
 })
-export class OrdersComponent implements OnInit {
+export class OrdersComponent implements OnInit,OnDestroy {
 
   orders:Order[] = []
   products:Product[] = []
+
+  private destroy$ = new Subject<void>();
 
   constructor(private api:ApiService,private loading:LoadingDetailsStoreService,private product:ProductsDetailsStoreService,private route:Router){}
 
   ngOnInit(): void {
     this.loading.dispatch(SetLoading({isLoading:true}))
-    this.api.Orders()
+    this.api.Orders().pipe(takeUntil(this.destroy$))
       .subscribe(data => {
         this.orders = data.result
         this.loading.dispatch(SetLoading({isLoading:false}))
@@ -34,6 +37,12 @@ export class OrdersComponent implements OnInit {
           console.log('error',err)
           this.loading.dispatch(SetLoading({isLoading:false}))
         })
+  }
+
+  ngOnDestroy(): void {
+    this.destroy$.next();
+    this.destroy$.complete();
+    this.loading.dispatch(SetLoading({isLoading:false}))
   }
 
   date(date:number){

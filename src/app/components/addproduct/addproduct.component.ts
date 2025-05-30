@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import {HttpClient} from '@angular/common/http'
 import { Environment } from 'src/app/environment/environment';
+import { Subject, takeUntil } from 'rxjs';
 
 interface Product_data{
   category:string,
@@ -17,14 +18,23 @@ interface Product_data{
   templateUrl: './addproduct.component.html',
   styleUrls: ['./addproduct.component.css']
 })
-export class AddproductComponent {
+export class AddproductComponent implements OnDestroy {
 
   file_selected:File|null=null
     response:any;
     product_data:Product_data = {} as Product_data
     url = this.env.Api
 
+    private destroy$ = new Subject<void>();
+
     constructor(private http:HttpClient,private env:Environment){}
+
+    ngOnDestroy(): void {
+    this.destroy$.next();
+    this.destroy$.complete();
+    // this.loading.dispatch(SetLoading({isLoading:false}))
+  }
+
     onchange(event:any){
       this.file_selected = event.target.files[0]
       this.convertToBase64(event.target.files[0])
@@ -41,7 +51,8 @@ export class AddproductComponent {
       const data = new FormData()
       data.append('file',this.file_selected)
       data.append('product_data',JSON.stringify(this.product_data))
-      this.http.post(`${this.url}/create`,this.product_data,{ withCredentials: true }).subscribe(
+      this.http.post(`${this.url}/create`,this.product_data,{ withCredentials: true }).pipe(takeUntil(this.destroy$))
+      .subscribe(
         res=>{
           this.response=res
           console.log("result",this.response)

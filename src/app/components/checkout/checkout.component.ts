@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Subject, takeUntil } from 'rxjs';
 import { Address, Checkout, OrderingProductInfo, Product } from 'src/app/Interfaces/AuthInterface';
 import CartDetailsStoreService from 'src/app/ReduxStore/Cart/CartDetails.service';
 import LoadingDetailsStoreService from 'src/app/ReduxStore/Loading/LoadingDetails.service';
@@ -12,10 +13,11 @@ import { ApiService } from 'src/app/services/api.service';
   templateUrl: './checkout.component.html',
   styleUrls: ['./checkout.component.css']
 })
-export class CheckoutComponent implements OnInit {
+export class CheckoutComponent implements OnInit,OnDestroy {
 
   step1:boolean = true;
   step2:boolean = false;
+  finalstep:string = '';
   address:Address = {} as Address;
   isaddressselected:boolean = true;
   product:any;
@@ -23,6 +25,8 @@ export class CheckoutComponent implements OnInit {
   quantitylist:number[] = []
   productslist:string[] = []
   allproducts:Product[] = []
+
+  private destroy$ = new Subject<void>();
 
   constructor(private api:ApiService,private route:Router,private loading:LoadingDetailsStoreService,private cart:CartDetailsStoreService,private products:ProductsDetailsStoreService){
     console.log(this.route.getCurrentNavigation())
@@ -45,6 +49,15 @@ export class CheckoutComponent implements OnInit {
       this.products.state$.subscribe(data => this.allproducts = data.result)
   }
 
+  ngOnDestroy(): void {
+      this.step1 = true;
+      this.step2 = false;
+      this.finalstep = '';
+      this.destroy$.next();
+      this.destroy$.complete();
+      this.loading.dispatch(SetLoading({isLoading:false}))
+  }
+
   checkout(){
     const data:Checkout = {
       address:this.address,
@@ -54,11 +67,18 @@ export class CheckoutComponent implements OnInit {
     }
     this.loading.dispatch(SetLoading({isLoading:true}))
 
-    this.api.Checkout(data).subscribe(data => {
+    this.api.Checkout(data).pipe(takeUntil(this.destroy$))
+    .subscribe(data => {
       this.loading.dispatch(SetLoading({isLoading:false}))
-      this.productslist.forEach(product => {
-        this.cart.dispatch(RemoveFromCart(this.allproducts.find(p => p.id === product) || {} as Product))
-      })
+      if(data.message === 'order added successfully'){
+        this.finalstep = 'success'
+        this.productslist.forEach(product => {
+          this.cart.dispatch(RemoveFromCart(this.allproducts.find(p => p.id === product) || {} as Product))
+        })
+      }
+      else{
+        this.finalstep = 'failed'
+      }
     },err => this.loading.dispatch(SetLoading({isLoading:false})))
   }
 
