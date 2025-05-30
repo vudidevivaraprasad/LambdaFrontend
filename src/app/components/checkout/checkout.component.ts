@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Address, Checkout, OrderingProductInfo } from 'src/app/Interfaces/AuthInterface';
+import { Address, Checkout, OrderingProductInfo, Product } from 'src/app/Interfaces/AuthInterface';
+import CartDetailsStoreService from 'src/app/ReduxStore/Cart/CartDetails.service';
 import LoadingDetailsStoreService from 'src/app/ReduxStore/Loading/LoadingDetails.service';
-import { SetLoading } from 'src/app/ReduxStore/Store';
+import ProductsDetailsStoreService from 'src/app/ReduxStore/Products/ProductDetails.service';
+import { RemoveFromCart, SetLoading } from 'src/app/ReduxStore/Store';
 import { ApiService } from 'src/app/services/api.service';
 
 @Component({
@@ -20,8 +22,9 @@ export class CheckoutComponent implements OnInit {
   amountlist:number[] = []
   quantitylist:number[] = []
   productslist:string[] = []
+  allproducts:Product[] = []
 
-  constructor(private api:ApiService,private route:Router,private loading:LoadingDetailsStoreService){
+  constructor(private api:ApiService,private route:Router,private loading:LoadingDetailsStoreService,private cart:CartDetailsStoreService,private products:ProductsDetailsStoreService){
     this.product = this.route.getCurrentNavigation()?.extras.state
     console.log('ordering product info',this.product)
     this.product.map((i:any) => {
@@ -35,7 +38,7 @@ export class CheckoutComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
+      this.products.state$.subscribe(data => this.allproducts = data.result)
   }
 
   checkout(){
@@ -49,6 +52,9 @@ export class CheckoutComponent implements OnInit {
 
     this.api.Checkout(data).subscribe(data => {
       this.loading.dispatch(SetLoading({isLoading:false}))
+      this.productslist.forEach(product => {
+        this.cart.dispatch(RemoveFromCart(this.allproducts.find(p => p.id === product) || {} as Product))
+      })
     },err => this.loading.dispatch(SetLoading({isLoading:false})))
   }
 
