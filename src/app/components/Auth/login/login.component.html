@@ -15,7 +15,7 @@
       <p class="text-danger" *ngIf="password_ref.touched && password_ref.value?.length<1">Password is required</p>
     </div>
 
-    <div *ngIf="message" class="bg-opacity-75" [ngClass]="message=='login successful'?'bg-success':'bg-danger'">
+    <div *ngIf="message && message!='login successful'" class="bg-opacity-75" [ngClass]="message=='login successful'?'bg-success':'bg-danger'">
       <p class="py-2 mt-1 text-center" >{{message}}</p>
     </div>
     <div class="d-grid gap-2 mt-2 ">

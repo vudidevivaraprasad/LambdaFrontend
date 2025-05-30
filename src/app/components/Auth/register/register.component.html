@@ -16,7 +16,7 @@
     </div>
     <div *ngIf="message" class="bg-opacity-75" [ngClass]="message=='OK'?'bg-success':'bg-danger'">
       <p *ngIf="message!='OK'" class="py-2 mt-1 text-center" >{{message}}</p>
-      <p *ngIf="message=='OK'" class="py-2 mt-1 text-center" >We’ve sent you a verification email. Please check your inbox to verify your account.</p>
+      <p *ngIf="message=='OK'" class="py-2 mt-1 text-center" >Please verify your mail.</p>
     </div>
     <div class="d-grid gap-2 mt-2">
       <button type="submit" class="btn btn-primary mt-3" [disabled]="form_ref.invalid || password_ref.value != confirmpassword_ref.value" (click)="submit()">Register</button>

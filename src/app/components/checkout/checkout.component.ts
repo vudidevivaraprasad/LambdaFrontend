@@ -65,6 +65,7 @@ export class CheckoutComponent implements OnInit,OnDestroy {
       quantity:this.quantitylist,
       products:this.productslist
     }
+    this.step2 = false
     this.loading.dispatch(SetLoading({isLoading:true}))
 
     this.api.Checkout(data).pipe(takeUntil(this.destroy$))
