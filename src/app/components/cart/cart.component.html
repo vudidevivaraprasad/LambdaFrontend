@@ -1,4 +1,8 @@
-<div>
+<div *ngIf="products.length===0">
+  <h1 style="padding-top: 5rem !important;" class="text-center mb-4 fw-bolder">Cart is Empty</h1>
+</div>
+
+<div *ngIf="products.length>0">
   <h1 style="padding-top: 5rem !important;" class="text-center mb-4 fw-bolder">Shopping Cart</h1>
   <div *ngFor="let product of products;let i=index" class="mb-3 d-flex justify-content-center align-items-center">
     <div class="custom-flex d-flex justify-content-between custom-height w-50  border rounded">

@@ -25,6 +25,10 @@ export class CheckoutComponent implements OnInit {
   allproducts:Product[] = []
 
   constructor(private api:ApiService,private route:Router,private loading:LoadingDetailsStoreService,private cart:CartDetailsStoreService,private products:ProductsDetailsStoreService){
+    console.log(this.route.getCurrentNavigation())
+    console.log(this.route.getCurrentNavigation()?.extras)
+    console.log(this.route.getCurrentNavigation()?.extras.state)
+    this.route.getCurrentNavigation()?.extras.state?'':this.route.navigate(['/home'])
     this.product = this.route.getCurrentNavigation()?.extras.state
     console.log('ordering product info',this.product)
     this.product.map((i:any) => {
