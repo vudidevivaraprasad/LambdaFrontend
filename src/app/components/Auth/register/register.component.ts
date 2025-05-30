@@ -24,7 +24,7 @@ export class RegisterComponent {
   submit(){
     this.message = ''
     this.loading.dispatch(SetLoading({isLoading:true}))
-    this.api.Register({mail:this.userdetails.mail,password:this.userdetails.password})
+    this.api.Register({mail:this.userdetails.mail.toLowerCase(),password:this.userdetails.password})
       .subscribe(data => {
         if(data.message === 'user registered'){
           this.mail.Verification(this.userdetails.mail,`${this.url}/verification?token=${data.token}`)

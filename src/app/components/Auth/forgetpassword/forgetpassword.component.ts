@@ -46,7 +46,7 @@ export class ForgetpasswordComponent implements OnInit {
 
   submit(){
       if(this.mail){
-        this.api.ForgetpasswordToken({mail:this.mail})
+        this.api.ForgetpasswordToken({mail:this.mail.toLowerCase()})
           .subscribe(data => {
             console.log('data',data)
             if(data?.message){

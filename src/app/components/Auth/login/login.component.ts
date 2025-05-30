@@ -13,17 +13,15 @@ import { ApiService } from 'src/app/services/api.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
-
   userdetails:Login = {} as Login;
   message:string = ''
   store = Store;
-
   constructor(private loading:LoadingDetailsStoreService,private user:AuthDetailsStoreService,private api:ApiService,private route:Router,private productservice:ProductsDetailsStoreService){}
 
   submit(){
     this.message = ''
     this.loading.dispatch(SetLoading({isLoading:true}))
-    this.api.Login(this.userdetails)
+    this.api.Login({mail:this.userdetails.mail.toLowerCase(),password:this.userdetails.password})
       .subscribe(data => {
         if(data.message === 'login successful'){
           this.message = data.message
